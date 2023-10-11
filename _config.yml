@@ -1,0 +1,49 @@
+# Book settings
+# Learn more at https://jupyterbook.org/customize/config.html
+
+title: Machine Learning for Materials
+author: Aron Walsh
+logo: logo.png
+copyright: "2023"
+
+# Force re-execution of notebooks on each build.
+# See https://jupyterbook.org/content/execute.html
+execute:
+  execute_notebooks: off
+  
+# Define the name of the latex output file for PDF builds
+latex:
+  latex_documents:
+    targetname: ml4materials.tex
+
+# Add a bibtex file so that we can create citations
+bibtex_bibfiles:
+  - ref.bib
+
+launch_buttons:
+  colab_url: "https://colab.research.google.com"
+  binderhub_url: "https://mybinder.org"
+  thebe: true
+
+# Information about where the book exists on the web
+repository:
+  url: https://github.com/aronwalsh/MLforMaterials  # Online location of your book
+  path_to_book: workbook  # Optional path to your book, relative to the repository root
+  branch: master  # Which branch of the repository should be used when creating links (optional)
+
+# Add GitHub buttons to your book
+# See https://jupyterbook.org/customize/config.html#add-a-link-to-your-repository
+html:
+  use_issues_button: true
+  use_repository_button: true
+  google_analytics_id: G-74ZFK336GP
+  
+parse:
+  myst_enable_extensions:
+    # don't forget to list any other extensions you want enabled,
+    # including those that are enabled by default!
+  - dollarmath
+  - amsmath
+  - linkify
+  - html_admonition
+  - html_image

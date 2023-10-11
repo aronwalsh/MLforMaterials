@@ -1,0 +1,15 @@
+astropy
+elementembeddings
+jupyter-book
+numpy
+matplotlib
+matminer
+mp-api
+mpcontribs-client
+pandas
+pymatgen
+scikit-image
+scikit-learn
+seaborn
+sunpy
+torchvision
