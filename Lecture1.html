@@ -569,14 +569,6 @@ document.write(`
 <p>Let’s install the package <a class="reference external" href="https://matplotlib.org">Matplotlib</a>, which we will be using a lot for data visualisation. You need a little patience when you install a package as the server is downloading the latest version including any necessary dependencies.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Library installation</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matplotlib<span class="w"> </span>--quiet
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Imports</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -596,14 +588,6 @@ You need to plot x vs y. Fix the plot command to (x,y).
 <section id="using-a-dataframe">
 <h3><span class="section-number">1.2.3. </span>Using a DataFrame<a class="headerlink" href="#using-a-dataframe" title="Permalink to this heading">#</a></h3>
 <p>Data frames are great tools to store, access, and modify large sets of data. In this course, we’ll be using a lot of <a class="reference external" href="https://pandas.pydata.org">Pandas</a> to process data for machine learning.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Library installation</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pandas<span class="w"> </span>--quiet
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -690,14 +674,6 @@ You need to tell `df.loc` what to look for. Put an element name in between the q
 <li><p><span class="math notranslate nohighlight">\(T\)</span> is the temperature.</p></li>
 </ul>
 <p>Let’s write a function for it, which will take advantage of the wonderful <a class="reference external" href="https://numpy.org">NumPy</a> package.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Library installation</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>numpy<span class="w"> </span>--quiet
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -802,14 +778,6 @@ Check that all of the plotting statements are correctly called `plt`.
 </div>
 </div>
 <p>The last technique to picked up in this class is data fitting. Later in the course, this will be expanded to more complex functions in high dimensions, but we’ll start with linear regression in just two.  There is no need to code this by hand as we can use a <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.linear_model.LinearRegression.html">function</a> in the machine learning package <a class="reference external" href="https://scikit-learn.org">scikit-learn</a>. The real power of Python is the quality and quantity of available libraries such as this one.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Library installation</span>
-<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>scikit-learn<span class="w"> </span>--quiet
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
