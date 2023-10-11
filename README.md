@@ -7,7 +7,7 @@
 
 # Machine Learning for Materials
 
-A practical machine learning course for materials science students.
+A practical machine learning course for materials science students in the Department of Materials at Imperial College London.
 
 You have the option to browse the files or download the complete folder using the green `clone or download` button on the top right of the screen ([zip file](https://github.com/aronwalsh/MLforMaterials/archive/master.zip)).
 
