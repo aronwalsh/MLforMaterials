@@ -1,7 +1,6 @@
 [![Made withJupyter](https://img.shields.io/badge/Made%20with-Jupyter-orange?style=for-the-badge&logo=Jupyter)](https://jupyter.org/try)
 
 [![deploy-book](https://github.com/aronwalsh/MLforMaterials/actions/workflows/deploy.yml/badge.svg)](https://github.com/aronwalsh/MLforMaterials/actions/workflows/deploy.yml)
-[![Binder](https://github.com/aronwalsh/MLforMaterials/actions/workflows/binder.yaml/badge.svg)](https://github.com/aronwalsh/MLforMaterials/actions/workflows/binder.yaml)
 [![made-with-Markdown](https://img.shields.io/badge/Made%20with-Markdown-1f425f.svg)](http://commonmark.org)
 [![CC-BY license](https://img.shields.io/badge/License-CC--BY-blue.svg)](https://creativecommons.org/licenses/by/4.0)
 
