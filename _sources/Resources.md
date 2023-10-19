@@ -41,9 +41,11 @@ There is a vibrant community of machine learning developers and open source pack
 
 * [Dive into Deep Learning](https://d2l.ai/index.html)
 
-* [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book/)
+* [Interpretable Machine Learning](https://christophm.github.io/interpretable-ml-book)
 
 * [Machine Learning in Materials Science](https://pubs.acs.org/doi/10.1021/acsinfocus.7e5033)
+
+* [Understanding Deep Learning](https://udlbook.github.io/udlbook)
 
 ## Papers 
 
