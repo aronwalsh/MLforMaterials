@@ -19,12 +19,12 @@
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="_static/styles/theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="_static/styles/bootstrap.css?digest=ac02cc09edc035673794" rel="stylesheet" />
-<link href="_static/styles/pydata-sphinx-theme.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="_static/styles/theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=c5ced968eda925caa686" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=c5ced968eda925caa686" rel="stylesheet" />
 
   
-  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=ac02cc09edc035673794" rel="stylesheet" />
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=c5ced968eda925caa686" rel="stylesheet" />
   <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
@@ -38,9 +38,9 @@
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794" />
-<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794" />
-  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=ac02cc09edc035673794"></script>
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=c5ced968eda925caa686"></script>
 
     <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
     <script src="_static/jquery.js"></script>
@@ -154,13 +154,14 @@ const thebe_selector_output = ".output, .cell_output"
   
   
   
+  
     
     
       
     
     
-    <img src="_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="_static/logo.png" class="logo__image only-light" alt="Machine Learning for Materials - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Machine Learning for Materials - Home"/>`);</script>
   
   
 </a></div>
@@ -485,8 +486,9 @@ document.write(`
 <p class="admonition-title">Ada Lovelace</p>
 <p>The more I study, the more insatiable do I feel my genius for it to be.</p>
 </div>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/3be55cc221ec446eb79c9b2a77fe695e" title="Machine Learning for Materials (Lecture 1)" allowfullscreen="true" style="border: 0px; background-clip: padding-box; background-color: rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 420;" data-ratio="1.3333333333333333"></iframe>
 <p><a class="reference external" href="https://speakerdeck.com/aronwalsh/machine-learning-for-materials-lecture-1">Lecture slides</a></p>
-<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/3be55cc221ec446eb79c9b2a77fe695e" title="Machine Learning for Materials (Lecture 1)" allowfullscreen="true" style="border: 0px; background-clip: padding-box; background-color: rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 420;" data-ratio="1.3333333333333333"></iframe><section id="getting-started">
+<section id="getting-started">
 <h2><span class="section-number">1.1. </span>👋 Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
 <p>Welcome to our first practical session!</p>
 <p>This is a Jupyter notebook loaded inside a Jupyter book. They are part of <a class="reference external" href="https://jupyter.org">Project Jupyter</a>, a suite of open source tools. A Jupyter notebook also allows you to run and easily share computer code. This combination makes Jupyter notebooks a useful tool for analysing data.</p>
@@ -619,9 +621,9 @@ Check you are printing the correct column name. Try out some of the other option
 </details><div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Add a new column</span>
-<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Band Gap (eV)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.47</span><span class="p">,</span> <span class="mf">5.14</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">4.34</span><span class="p">,</span> <span class="mf">7.01</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="s2">&quot;Energy (eV)&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="mf">5.47</span><span class="p">,</span> <span class="mf">5.14</span><span class="p">,</span> <span class="mf">0.12</span><span class="p">,</span> <span class="mf">4.34</span><span class="p">,</span> <span class="mf">7.01</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Band Gap (eV)&quot;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Energy (eV)&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1045,8 +1047,8 @@ By Aron Walsh
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="_static/scripts/bootstrap.js?digest=ac02cc09edc035673794"></script>
-<script src="_static/scripts/pydata-sphinx-theme.js?digest=ac02cc09edc035673794"></script>
+  <script src="_static/scripts/bootstrap.js?digest=c5ced968eda925caa686"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=c5ced968eda925caa686"></script>
 
   <footer class="bd-footer">
   </footer>
