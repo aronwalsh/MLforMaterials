@@ -2,8 +2,7 @@ jupyter-book
 jupyterlab_myst
 numpy
 matplotlib
-myst-parser
+myst-nb
 pandas
-pymatgen
 scikit-learn
 seaborn
