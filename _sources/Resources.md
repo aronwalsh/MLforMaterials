@@ -45,6 +45,8 @@ There is a vibrant community of machine learning developers and open source pack
 
 * [Machine Learning in Materials Science](https://pubs.acs.org/doi/10.1021/acsinfocus.7e5033)
 
+* [Reinforcement Learning and Optimal Control](https://web.mit.edu/dimitrib/www/RLbook.html)
+
 * [Understanding Deep Learning](https://udlbook.github.io/udlbook)
 
 ## Papers 
