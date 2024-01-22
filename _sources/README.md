@@ -18,6 +18,8 @@ You will consider how composition-structure-property information in materials sc
 
 A hybrid teaching style will be followed with a mixture of lectures and assignments. The course assumes a basic working knowledge of the Python 3 programming language.
 
+[Lecture Slides](./slides)
+
 [Post a Query](https://github.com/aronwalsh/MLforMaterials/issues)
 
 ## Course Website

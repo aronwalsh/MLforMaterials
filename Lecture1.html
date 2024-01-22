@@ -606,14 +606,13 @@ You need to plot x vs y. Fix the plot command to (x,y).
     <span class="s2">&quot;Atomic Mass&quot;</span> <span class="p">:</span> <span class="p">[</span><span class="mi">12</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">56</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">131</span><span class="p">]</span>
 <span class="p">}</span>
 
-<span class="c1">#Lets try loading data into dataframe df</span>
+<span class="c1"># Let&#39;s try loading data into DataFrame df</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 
-<span class="c1">#should be aware of that if not dt.copy(), then further processing with change the original df</span>
-<span class="c1">#We can make the &#39;Element&#39; column the index of this DataFrame using the set_index function</span>
+<span class="c1"># We can make the &#39;Element&#39; column the index of this DataFrame using the set_index function</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s2">&quot;Element&quot;</span><span class="p">)</span>
 
-<span class="c1">#Printing the values in the &#39;Atomic Number&#39; column</span>
+<span class="c1"># Printing the values in the &#39;Atomic Number&#39; column</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;Atom Number&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -688,7 +687,7 @@ You need to tell `df.loc` what to look for. Put an element name in between the q
 
 <span class="c1"># Setting the constants</span>
 <span class="n">k_B</span> <span class="o">=</span> <span class="n">physical_constants</span><span class="p">[</span><span class="s1">&#39;Boltzmann constant in eV/K&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
-<span class="c1">#k_B = 8.617333262145e-5  # Boltzmann constant in eV/K</span>
+<span class="c1"># k_B = 8.617333262145e-5  # Boltzmann constant in eV/K</span>
 <span class="n">D0</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># Pre-exponential term</span>
 
 <span class="c1"># Arrhenius equation</span>
@@ -889,7 +888,36 @@ Your model is not called `model2`. Try changing the name.
 </section>
 <section id="tasks">
 <h3><span class="section-number">1.4.2. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this heading">#</a></h3>
-<p>…</p>
+<p>Due to their importance in the electronics industry, diffusion of atoms in semiconductors has been well studied for decades. Below is a set of data for impurity diffusion in crystalline Si [Source: <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-1-4684-0904-8_2">Casey and Pearson (1975)</a>]. It has been arranged into a DataFrame for your convenience.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;Impurity&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="s1">&#39;Ga&#39;</span><span class="p">,</span> <span class="s1">&#39;In&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;As&#39;</span><span class="p">,</span> <span class="s1">&#39;Sb&#39;</span><span class="p">,</span> <span class="s1">&#39;Bi&#39;</span><span class="p">],</span>
+    <span class="s1">&#39;D0&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.1</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">16.5</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">,</span> <span class="mf">1.03E3</span><span class="p">],</span>  <span class="c1"># units of cm2/sec</span>
+    <span class="s1">&#39;Eact&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.70</span><span class="p">,</span> <span class="mf">3.47</span><span class="p">,</span> <span class="mf">3.51</span><span class="p">,</span> <span class="mf">3.91</span><span class="p">,</span> <span class="mf">3.69</span><span class="p">,</span> <span class="mf">4.20</span><span class="p">,</span> <span class="mf">3.98</span><span class="p">,</span> <span class="mf">4.63</span><span class="p">]</span>  <span class="c1"># units of eV</span>
+<span class="p">}</span>
+
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You have two tasks to complete:</p>
+<ol class="arabic simple">
+<li><p>Produce a single plot using Matplotlib that contains diffusion coefficient vs reciprocal temperature for each of the impurities.</p></li>
+<li><p>Assess if the activation energy is correlated to the atomic mass of the elements using a plot. Is there a simple linear relationship? Provide a brief written statement to explain your analysis.</p></li>
+</ol>
+<details>
+<summary> Task hint </summary>
+To speed up part 2: df['AtomicMass'] = [10.81, 26.98, 69.72, 114.82, 30.97, 74.92, 121.76, 208.98]
+</details>
+<div class="note admonition">
+<p class="admonition-title">Submission</p>
+<p>When your notebook is complete, click on the download icon on the top right, select <code class="docutils literal notranslate"><span class="pre">.pdf</span></code>, save the file and upload it to MyDepartment. If you are using Google Colab, you have to print to pdf.</p>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Code block</span>
@@ -923,9 +951,9 @@ Your model is not called `model2`. Try changing the name.
 <section id="dive-deeper">
 <h2><span class="section-number">1.5. </span>🌊 Dive deeper<a class="headerlink" href="#dive-deeper" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
-<li><p><em>Level 1:</em> Taylor Sparks has a collection of video lectures on <a class="reference external" href="https://www.youtube.com/watch?v=tn1wpfpLx6Y&amp;list=PLL0SWcFqypCmkHClksnGlab3wglEVMqNN&amp;index=2">Python for Materials Engineers</a>.</p></li>
-<li><p><em>Level 2:</em> If you are a matplotlib pro user, try <a class="reference external" href="https://plotly.com/python">plotly</a> and <a class="reference external" href="https://docs.bokeh.org/en/2.4.1/docs/gallery.html">bokeh</a> for interactive visualisations.</p></li>
-<li><p><em>Level 3:</em> Already a Python master and want something faster? Check out the <a class="reference external" href="https://julialang.org">Julia</a> language.</p></li>
+<li><p><em>Level 1:</em> Read Chapter 1 of <a class="reference external" href="https://github.com/jermwatt/machine_learning_refined#what-is-new-in-the-second-edition">Machine Learning Refined</a> for a complementary introduction to the field.</p></li>
+<li><p><em>Level 2:</em> Taylor Sparks has a collection of video lectures on <a class="reference external" href="https://www.youtube.com/watch?v=tn1wpfpLx6Y&amp;list=PLL0SWcFqypCmkHClksnGlab3wglEVMqNN&amp;index=2">Python for Materials Engineers</a>.</p></li>
+<li><p><em>Level 3:</em> If you are a matplotlib pro user, try <a class="reference external" href="https://plotly.com/python">plotly</a> and <a class="reference external" href="https://docs.bokeh.org/en/2.4.1/docs/gallery.html">bokeh</a> for interactive visualisations.</p></li>
 </ul>
 </section>
 </section>
