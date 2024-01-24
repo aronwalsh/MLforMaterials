@@ -724,7 +724,7 @@ You need to tell `df.loc` what to look for. Put an element name in between the q
 <span class="n">rates</span> <span class="o">=</span> <span class="n">arrhenius</span><span class="p">(</span><span class="n">activation_energy</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
 
 <span class="c1"># Plotting</span>
-<span class="n">pl</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">rates</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;Activation Energy = </span><span class="si">{</span><span class="n">activation_energy</span><span class="si">}</span><span class="s1"> eV&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Temperature (K)&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;$D_</span><span class="si">{ion}</span><span class="s1">$ (cm$^2$/s)&#39;</span><span class="p">)</span>  <span class="c1"># Adding units to y-axis</span>
@@ -751,7 +751,7 @@ Check that all of the plotting statements are correctly called `plt`.
 <span class="n">T</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">100</span><span class="p">,</span> <span class="mi">1000</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span>
 
 <span class="c1"># Calculate rates and plot curves</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> 
 <span class="k">for</span> <span class="n">activation_energy</span> <span class="ow">in</span> <span class="n">activation_energies</span><span class="p">:</span>
     <span class="n">rates</span> <span class="o">=</span> <span class="n">arrhenius</span><span class="p">(</span><span class="n">activation_energy</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">rates</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">activation_energy</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> eV&#39;</span><span class="p">)</span>
@@ -773,7 +773,7 @@ Check that all of the plotting statements are correctly called `plt`.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plotting ln(R) vs 1000/T</span>
-<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> 
 <span class="k">for</span> <span class="n">activation_energy</span> <span class="ow">in</span> <span class="n">activation_energies</span><span class="p">:</span>
     <span class="n">rates</span> <span class="o">=</span> <span class="n">arrhenius</span><span class="p">(</span><span class="n">activation_energy</span><span class="p">,</span> <span class="n">T</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="mi">1000</span><span class="o">/</span><span class="n">T</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">rates</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">activation_energy</span><span class="si">:</span><span class="s1">.1f</span><span class="si">}</span><span class="s1"> eV&#39;</span><span class="p">)</span>
@@ -829,6 +829,7 @@ Again you need to choose the number of points. 50 should be fine, but you have t
 <span class="n">error_bars</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">residuals</span><span class="p">)</span>
 
 <span class="c1"># Plot the linear regression line</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span> 
 <span class="n">plt</span><span class="o">.</span><span class="n">errorbar</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">],</span> <span class="n">yerr</span><span class="o">=</span><span class="n">error_bars</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Data with Errors&#39;</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;Y&#39;</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;X&#39;</span><span class="p">],</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;red&#39;</span><span class="p">)</span>
@@ -889,9 +890,7 @@ Your model is not called `model2`. Try changing the name.
 <section id="tasks">
 <h3><span class="section-number">1.4.2. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this heading">#</a></h3>
 <p>Due to their importance in the electronics industry, diffusion of atoms in semiconductors has been well studied for decades. Below is a set of data for impurity diffusion in crystalline Si [Source: <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-1-4684-0904-8_2">Casey and Pearson (1975)</a>]. It has been arranged into a DataFrame for your convenience.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;Impurity&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="s1">&#39;Ga&#39;</span><span class="p">,</span> <span class="s1">&#39;In&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;As&#39;</span><span class="p">,</span> <span class="s1">&#39;Sb&#39;</span><span class="p">,</span> <span class="s1">&#39;Bi&#39;</span><span class="p">],</span>
@@ -903,16 +902,14 @@ Your model is not called `model2`. Try changing the name.
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<p>You have two tasks to complete:</p>
+<p>You have two tasks to complete for this exercise:</p>
 <ol class="arabic simple">
 <li><p>Produce a single plot using Matplotlib that contains diffusion coefficient vs reciprocal temperature for each of the impurities.</p></li>
 <li><p>Assess if the activation energy is correlated to the atomic mass of the elements using a plot. Is there a simple linear relationship? Provide a brief written statement to explain your analysis.</p></li>
 </ol>
 <details>
 <summary> Task hint </summary>
-To speed up part 2: df['AtomicMass'] = [10.81, 26.98, 69.72, 114.82, 30.97, 74.92, 121.76, 208.98]
+To speed up task 2: df['AtomicMass'] = [10.81, 26.98, 69.72, 114.82, 30.97, 74.92, 121.76, 208.98]
 </details>
 <div class="note admonition">
 <p class="admonition-title">Submission</p>
@@ -1061,7 +1058,7 @@ By Aron Walsh
 
   <p class="copyright">
     
-      © Copyright 2023.
+      © Copyright 2024.
       <br/>
     
   </p>
