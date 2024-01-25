@@ -1,0 +1,921 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>2. Materials Modelling &#8212; Machine Learning for Materials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-74ZFK336GP"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-74ZFK336GP');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lecture2';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="1. Introduction" href="Lecture1.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="Overview.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Machine Learning for Materials - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Machine Learning for Materials - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Overview.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Details</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Contents.html">Course Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning.html">Learning Outcomes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Resources.html">Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Lecture1.html">1. Introduction</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">2. Materials Modelling</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/aronwalsh/MLforMaterials/main?urlpath=tree/Lecture2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/aronwalsh/MLforMaterials/blob/main/Lecture2.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/aronwalsh/MLforMaterials" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aronwalsh/MLforMaterials/issues/new?title=Issue%20on%20page%20%2FLecture2.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Lecture2.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Materials Modelling</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crystal-electrostatics">2.1. ⚡️ Crystal electrostatics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-background">2.1.1. Theoretical background</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-virtual-perovskite">2.2. Create a virtual perovskite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-virtual-double-perovskite">2.3. Create a virtual double perovskite</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-site-occupancies">2.3.1. Partial site occupancies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-combinatorics">2.3.2. Structure combinatorics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-of-a-string">2.3.3. Permutations of a string</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-atomic-permutations">2.4. 🚨 Exercise 2: Atomic permutations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-details">2.4.1. Your details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">2.4.2. Tasks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-deeper">2.5. 🌊 Dive deeper</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="materials-modelling">
+<h1><span class="section-number">2. </span>Materials Modelling<a class="headerlink" href="#materials-modelling" title="Permalink to this heading">#</a></h1>
+<div class="tip admonition">
+<p class="admonition-title">John Stewart Bell</p>
+<p>Theoretical physicists live in a classical world, looking out into a quantum-mechanical world.</p>
+</div>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/db5df387845c4802b0bbae449095899c" title="Machine Learning for Materials (Lecture 2)" allowfullscreen="true" style="border: 0px; background-clip: padding-box; background-color: rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 420;" data-ratio="1.3333333333333333"></iframe>
+<p><a class="reference external" href="https://speakerdeck.com/aronwalsh/mlformaterials-lecture2-modelling">Lecture slides</a></p>
+<section id="crystal-electrostatics">
+<h2><span class="section-number">2.1. </span>⚡️ Crystal electrostatics<a class="headerlink" href="#crystal-electrostatics" title="Permalink to this heading">#</a></h2>
+<p>Hello again!</p>
+<p>This activity aims to build your understanding of using Python for materials modelling. It will require you to think back to undergraduate lectures on crystallography and materials chemistry. You are encouraged to look up concepts that you are not familiar with.</p>
+<p>We will use the computational materials science package <code class="docutils literal notranslate"><span class="pre">pymatgen</span></code> (<a class="reference external" href="https://pymatgen.org">https://pymatgen.org</a>). Many Python packages have <code class="docutils literal notranslate"><span class="pre">py</span></code> at the start of their name. This one is useful to manipulate materials through its application programming interface (API). It also allows you to efficiently access and analyse the crystal structures and calculated properties that are available on <a class="reference external" href="https://materialsproject.org">Materials Project</a>.</p>
+<section id="theoretical-background">
+<h3><span class="section-number">2.1.1. </span>Theoretical background<a class="headerlink" href="#theoretical-background" title="Permalink to this heading">#</a></h3>
+<p>The classical electrostatic interaction between point charges is described by Coulomb’s law. For two interacting ions with charge <span class="math notranslate nohighlight">\(q\)</span> and distance <span class="math notranslate nohighlight">\(r\)</span> in a medium of dielectric constant <span class="math notranslate nohighlight">\(\epsilon_0\)</span>, the electrostatic energy is defined in the usual way:</p>
+<div class="math notranslate nohighlight">
+\[
+    E(r) = \frac{1}{4 \pi \epsilon_0}\frac{q^2}{r}
+\]</div>
+<p>Due to the repeating unit cells, the electrostatic energy of a crystal composed of ions is more complicated to compute. Here, the electrostatic energy is defined by a conditionally convergent series. The number of charges grows with the square of the radius used for the summation.</p>
+<p><img alt="image" src="_images/2_sum.png" /></p>
+<p>Ewald summation is a numerical technique to calculate the electrostatic potential energy of a crystal. The mathematical trick used is to split the electrostatic summation into real space and Fourier (reciprocal) space terms to ensure convergence at both short and long ranges. The technical background isn’t important now, but is detailed over <a class="reference external" href="https://en.wikipedia.org/wiki/Ewald_summation">here</a> if you are curious. The corresponding expression can be written as:</p>
+<div class="math notranslate nohighlight">
+\[
+E_{\text{Ewald}}(r) = \frac{1}{2} \sum_{i \neq j}^{N} q_i q_j \Bigg[\frac{\text{erf}(\alpha r_{ij})}{r_{ij}} + \frac{\text{erfc}(\alpha r_{ij})}{\kappa^2} \exp\Bigg(-\frac{\kappa^2 r_{ij}^2}{4}\Bigg)\Bigg] + \frac{1}{2} \sum_{i=1}^{N} q_i^2 \frac{\alpha}{\sqrt{\pi}}
+\]</div>
+<p>Luckily, we don’t have to solve such an expression by hand. Within <code class="docutils literal notranslate"><span class="pre">pymatgen</span></code>, the <code class="docutils literal notranslate"><span class="pre">pymatgen.analysis.ewald</span></code> module contains the <code class="docutils literal notranslate"><span class="pre">EwaldSummation</span></code> class that enables us to compute the electrostatic energy for any given structure and will be used later.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Installation of libraries</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>pymatgen<span class="w"> </span>--quiet
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import of modules</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># Data manipulation with DataFrames</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># Numerical operations</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># Plotting</span>
+<span class="kn">from</span> <span class="nn">pymatgen.core</span> <span class="kn">import</span> <span class="n">Structure</span><span class="p">,</span> <span class="n">Lattice</span>  <span class="c1"># Materials analysis for crystal structures</span>
+<span class="kn">from</span> <span class="nn">pymatgen.analysis.ewald</span> <span class="kn">import</span> <span class="n">EwaldSummation</span>  <span class="c1"># Ewald summation for charged systems</span>
+<span class="kn">from</span> <span class="nn">pymatgen.analysis.structure_matcher</span> <span class="kn">import</span> <span class="n">StructureMatcher</span>  <span class="c1"># Structure matching</span>
+<span class="kn">import</span> <span class="nn">itertools</span>  <span class="c1"># Functions for efficient looping and iteration</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="create-a-virtual-perovskite">
+<h2><span class="section-number">2.2. </span>Create a virtual perovskite<a class="headerlink" href="#create-a-virtual-perovskite" title="Permalink to this heading">#</a></h2>
+<p>The <a class="reference external" href="https://pymatgen.org/pymatgen.core.structure.html"><code class="docutils literal notranslate"><span class="pre">Structure</span></code> module</a> contains the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> class which can be used to represent the unit cell of a crystal.  Remember, this is the simplest repeat unit of a crystal that is defined by three unit cell lengths (<strong>a</strong>,<strong>b</strong>,<strong>c</strong>), three angles (<span class="math notranslate nohighlight">\(\alpha,\beta,\gamma\)</span>), and the fractional coordinates of the atoms that it contains.</p>
+<p>Below, we will create a model of a cubic perovskite from its spacegroup, Pm3̅m (No. 221). For a cubic unit cell <strong>a</strong> = <strong>b</strong> = <strong>c</strong> and <span class="math notranslate nohighlight">\(\alpha = \beta = \gamma = 90 ^{\circ}\)</span>, so we only need to know the length of <strong>a</strong>.</p>
+<p>We will now generate a structure for CsPbI<sub>3</sub> from a spacegroup using the class method <code class="docutils literal notranslate"><span class="pre">Structure.from_spacegroup()</span></code>.</p>
+<p><img alt="image" src="_images/2_CsPbI3.png" /></p>
+<p>This graphic was created using <a class="reference external" href="https://jp-minerals.org/vesta/en">VESTA</a>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a structure for cubic CsPbI3 using pymatgen</span>
+<span class="c1">#</span>
+<span class="c1"># We must define the spacegroup, unit cell (lattice) dimensions, </span>
+<span class="c1"># chemical species and their coordinates</span>
+<span class="c1">#</span>
+<span class="n">CsPbI3</span> <span class="o">=</span> <span class="n">Structure</span><span class="o">.</span><span class="n">from_spacegroup</span><span class="p">(</span>
+<span class="s1">&#39;Pm-3m&#39;</span><span class="p">,</span> <span class="c1"># Spacegroup for a cubic perovskite</span>
+<span class="n">Lattice</span><span class="o">.</span><span class="n">cubic</span><span class="p">(</span><span class="mf">6.41</span><span class="p">),</span> <span class="c1"># Cubic spacing of 6.41 Å</span>
+<span class="p">[</span><span class="s1">&#39;Pb2+&#39;</span><span class="p">,</span> <span class="s1">&#39;Cs+&#39;</span><span class="p">,</span> <span class="s1">&#39;I-&#39;</span><span class="p">],</span> <span class="c1"># Unique species of the ABX3 compound</span>
+<span class="p">[[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">],[</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">0.5</span><span class="p">],[</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.</span><span class="p">,</span><span class="mf">0.5</span><span class="p">]]</span> <span class="c1"># Fractional atomic coordinates of each site</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can display information about the structure that we have created by simply printing it.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the structure details</span>
+<span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details>
+<summary> Code hint </summary>
+You want to print your structure object CsPbI3
+</details><p>Within <code class="docutils literal notranslate"><span class="pre">pymatgen</span></code>, we can export crystal structures to a variety of file formats using the <code class="docutils literal notranslate"><span class="pre">to</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> class. Some of these include the Crystallographic Information Format (cif) and POSCAR (the standard file format for the density functional theory code VASP). A complete list of file formats can be found in <a class="reference external" href="https://pymatgen.org/pymatgen.core.structure.html#pymatgen.core.structure.IStructure.to">the docs</a> for the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> class.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">filename</span></code> argument of the <code class="docutils literal notranslate"><span class="pre">to</span></code> method needs to be specified to save the file to disk. Only supplying the <code class="docutils literal notranslate"><span class="pre">fmt</span></code> argument will result in a string being returned.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the file to screen</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\n</span><span class="s1">The CIF format for CsPbI3 is shown below:</span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">CsPbI3</span><span class="o">.</span><span class="n">to</span><span class="p">(</span><span class="n">fmt</span><span class="o">=</span><span class="s1">&#39;cif&#39;</span><span class="p">))</span>
+
+<span class="c1"># Export the structure to a CIF</span>
+<span class="c1"># CsPbI3.to(filename=&#39;CsPbI3.cif&#39;)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details>
+<summary> Code hint </summary>
+You can export a .cif by uncommenting and running the lines above. These files can be opened in a visualiser of your choice (e.g. VESTA or Crystalmaker).
+</details><p>We can make an ionic approximation for CsPbI<sub>3</sub> and consider that the crystal is formed of Cs<sup>+</sup>, Pb<sup>2+</sup>, and I<sup>-</sup> ions. The crystal is charge neutral overall as the sum of cations (3<span class="math notranslate nohighlight">\(^+\)</span>) is balanced by the sum of anions (3<span class="math notranslate nohighlight">\(^-\)</span>). This model is a reasonable starting point, but it is worth remembering than bonding in real solids is more complicated than a simple classification of “ionic”, “covalent” or “metallic” (e.g. see this <a class="reference external" href="https://www.nature.com/articles/s41563-018-0165-7">perspective</a>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Instantiate the EwaldSummation class with our perovskite structure</span>
+<span class="n">es</span> <span class="o">=</span> <span class="n">EwaldSummation</span><span class="p">(</span><span class="n">CsPbI</span><span class="p">)</span>
+
+<span class="c1"># Print the computed Ewald Sum</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39; The electrostatic energy of CsPbI3 is </span><span class="si">{</span><span class="n">es</span><span class="o">.</span><span class="n">total_energy</span><span class="si">:</span><span class="s1">.2f</span><span class="si">}</span><span class="s1"> eV&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details>
+<summary> Code hint </summary>
+Check that the chemical formula is correct.</details></section>
+<section id="create-a-virtual-double-perovskite">
+<h2><span class="section-number">2.3. </span>Create a virtual double perovskite<a class="headerlink" href="#create-a-virtual-double-perovskite" title="Permalink to this heading">#</a></h2>
+<p>A three-component ABX<span class="math notranslate nohighlight">\(_3\)</span> perovskite isn’t always enough to access the properties that we want. There are many ways to expand the crystal chemical space of perovskites. One approach is to double the unit cell from ABX<span class="math notranslate nohighlight">\(_3\)</span> to A<span class="math notranslate nohighlight">\(_2\)</span>B<span class="math notranslate nohighlight">\(_2\)</span>X<span class="math notranslate nohighlight">\(_6\)</span>. We can replace one of the B sites by B’ to form a A<span class="math notranslate nohighlight">\(_2\)</span>BB’X<span class="math notranslate nohighlight">\(_6\)</span> compound. It turns out that this is the natural structure of the mineral elpasolite K<span class="math notranslate nohighlight">\(_2\)</span>NaAlF<span class="math notranslate nohighlight">\(_6\)</span> (e.g. see a <a class="reference external" href="https://www.sciencedirect.com/science/article/pii/S136970212030451X">review</a> on the topic).</p>
+<p><img alt="image" src="_images/2_Cs2AgBiI6.png" /></p>
+<p>A graphic of the double halide perovskite Cs<sub>2</sub>AgBiI<sub>6</sub>, where the octahedral B-site is occupied by two distint cations Ag and Bi.</p>
+<section id="partial-site-occupancies">
+<h3><span class="section-number">2.3.1. </span>Partial site occupancies<a class="headerlink" href="#partial-site-occupancies" title="Permalink to this heading">#</a></h3>
+<p>Each species occupied a distinct atomic site in the original CsPbI<sub>3</sub> structure. This structure can be classified as ordered. However, many materials have more complex structures that include some form of disorder in how the species are distributed over crystallographic sites.</p>
+<p>For example, imagine a one-dimensional nanowire with frogs and foxes in a 1:1 ratio, where each site has a 50% probabily of being occupied by 🐸 or 🦊. These may form local sequences such as (🐸🦊🐸🦊🐸🦊), (🐸🐸🦊🐸🦊🦊) and (🐸🐸🐸🦊🦊🦊).</p>
+<p>This type of disorder in a crystal is termed partial site occupancy, where a mixture of atoms (and sometimes vacancies) occupy the same crystallographic site. It is common in substitutional alloys of the form A<span class="math notranslate nohighlight">\(_{1-x}\)</span>B<span class="math notranslate nohighlight">\(_x\)</span>. We can create structures with partial occupancies in <code class="docutils literal notranslate"><span class="pre">pymatgen</span></code> by specifying the occupancy of the atoms in the structure that we create. If Pb<sup>2+</sup> is replaced by an equivalent number of Ag<sup>+</sup> and Bi<sup>3+</sup> cations, then the charge balance of the crystal is maintained. In terms of charges:</p>
+<div class="math notranslate nohighlight">
+\[
+2 q(\mathrm{Pb}^{2+}) = 4^+ = q(\mathrm{Ag}^+) + q(\mathrm{Bi}^{3+})
+\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replace Pb2+ ions with Ag+ and Bi3+ in CsPbI3</span>
+
+<span class="c1"># Create a copy of the structure</span>
+<span class="n">Cs2AgBiI6</span> <span class="o">=</span> <span class="n">CsPbI3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+
+<span class="c1"># Change the first ion (Pb2+) to 0.5Ag+, 0.5Bi3+</span>
+<span class="n">Cs2AgBiI6</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Ag+&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">,</span> <span class="s1">&#39;Bi3+&#39;</span><span class="p">:</span><span class="mf">0.5</span><span class="p">}</span>
+
+<span class="c1"># Print the structure</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Cs2AgBiI6</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>To model the double perovskite structure, we have substituted both Ag and Bi onto the Pb site in CsPbI<sub>3</sub>.</p>
+<p>The substitution onto the 5-atom unit cell has produced a statistically disordered structure due to Ag and Bi both occupying the same site with partial occupancies of 50%. To use this structure as an input for material modelling, we should make an ordered representation of the structure. This may be a set of ordered configurations that forms an ensemble to represent the disordered nature of the true material.</p>
+<p>We can achieve this by creating a supercell. Expanding the unit cell twice in each direction (i.e. <span class="math notranslate nohighlight">\(2\textbf{a} \times 2\textbf{b} \times 2\textbf{c}\)</span>) produces a 40-atom supercell with 8 Pb sites. We could then distribute the 4 Ag and 4 Bi atoms across these 8 Pb sites. This approach introduces a new problem: which sites do we choose to substitute the Ag and Bi atoms? The choice of substitution would affect the structure and energy of the double perovskite, (⍰ ⍰ ⍰ ⍰ ⍰ ⍰ ⍰ ⍰)?</p>
+<p>Let’s create a supercell of our CsPbI<sub>3</sub> perovskite. We can do this using the <code class="docutils literal notranslate"><span class="pre">.make_supercell()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">Structure</span></code> class.  Note this is an in-place operation, which means that the operation is applied to the existing <code class="docutils literal notranslate"><span class="pre">Structure</span></code> object and returns nothing.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2a x 2b x 2c supercell of the cubic CsPbI3 structure</span>
+<span class="n">supercell</span> <span class="o">=</span> <span class="n">CsPbI3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">supercell</span><span class="o">.</span><span class="n">make_supercell</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># or 2,2,2, i.e. doubled in each direction</span>
+
+<span class="c1"># Print the supercell</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">supercell</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Before moving on, think about how you would try distribute the Ag<sup>+</sup> and Bi<sup>3+</sup> ions on the eight Pb<sup>2+</sup> sites, e.g. (🐸🦊🐸🦊🐸🦊🐸🦊) and (🐸🐸🐸🐸🦊🦊🦊🦊).</p>
+</section>
+<section id="structure-combinatorics">
+<h3><span class="section-number">2.3.2. </span>Structure combinatorics<a class="headerlink" href="#structure-combinatorics" title="Permalink to this heading">#</a></h3>
+<p>To model a disordered crystal at the nanoscale, one approach is to enumerate all of the different atomic configurations in a supercell. We should consider the disordered sites and calculate the possible permutations (arrangements) of the ions.</p>
+<p>The number of permutations <span class="math notranslate nohighlight">\(\textit{P}\)</span> for a crystallographic site with <span class="math notranslate nohighlight">\(N\)</span> different atoms, which have multiplicities <span class="math notranslate nohighlight">\(m_i\)</span>, for <span class="math notranslate nohighlight">\(i = 1 ... N\)</span> occupying the site can be calculated using the formula for a multi-set permutation:</p>
+<div class="math notranslate nohighlight">
+\[
+    P(m_1,m_2,...,m_N) = \frac{(m_1+m_2+...+m_N)!}{m_1!m_2!...m_N!}=\frac{(\sum_{i=1}^{N} m_i)!}{\prod_{i=1}^{N} k_i!}
+\]</div>
+<p>For our double perovskite structure, try to think of how many permutations of Ag and Bi are possible in the <span class="math notranslate nohighlight">\(2\textbf{a} \times 2\textbf{b} \times 2\textbf{c}\)</span> supercell with 8 Pb sites.</p>
+</section>
+<section id="permutations-of-a-string">
+<h3><span class="section-number">2.3.3. </span>Permutations of a string<a class="headerlink" href="#permutations-of-a-string" title="Permalink to this heading">#</a></h3>
+<p>For calculating permutations of an iterable object, we can use the <code class="docutils literal notranslate"><span class="pre">itertools.permutations()</span></code> function. A description of this function can be found in <a class="reference external" href="https://docs.python.org/3/library/itertools.html#itertools.permutations"><code class="docutils literal notranslate"><span class="pre">itertools</span></code> docs</a>. Note that the permutations produced using this function might not necessarily be unique.
+To understand the idea, we will consider the permutations of the <code class="docutils literal notranslate"><span class="pre">string</span></code> ‘🐸🦊🦊🙀’.</p>
+<p>Before you run the cell block below, think of the number of permutations of ‘🐸🦊🦊🙀’.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Generate permutations</span>
+<span class="n">permutations</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">permutations</span><span class="p">(</span><span class="s1">&#39;🐸🦊🦊🙀&#39;</span><span class="p">)</span> <span class="c1"># This returns an itertools.permutation object</span>
+
+<span class="c1"># Convert the above object to a list</span>
+<span class="n">perms_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">permutations</span><span class="p">)</span>
+
+<span class="c1"># Print out the list</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;We have </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">perms_list</span><span class="p">)</span><span class="si">}</span><span class="s2"> permutations:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">p_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details>
+<summary> Code hint </summary>
+Print the correct list in the last line.
+</details><p>From the above output, we can see that there are duplicate entries from the permutation of 🐸🦊🦊🙀. This happens as <code class="docutils literal notranslate"><span class="pre">itertools</span></code> considers elements in an iterable to be unique based of their position rather than their value. While this can be easy to spot in the example above, manually trying to filter out duplicate permutations is not an efficient use of our time.</p>
+<p>Fortanately, we can reduce the permutations to a list of unique permutations quite simply using the <code class="docutils literal notranslate"><span class="pre">set</span></code> function.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a set for the permutations</span>
+<span class="n">perms_set</span> <span class="o">=</span> <span class="nb">set</span><span class="p">(</span><span class="n">perms_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;We have </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">perms_set</span><span class="p">)</span><span class="si">}</span><span class="s2"> unique permutations:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">perms_set</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We have removed the duplicate entries and returned the unique permutations of the string. Imagine how useful this is when dealing with complex structures containing hundreds of atoms and millions of permutations.</p>
+</section>
+</section>
+<section id="exercise-2-atomic-permutations">
+<h2><span class="section-number">2.4. </span>🚨 Exercise 2: Atomic permutations<a class="headerlink" href="#exercise-2-atomic-permutations" title="Permalink to this heading">#</a></h2>
+<div class="note admonition">
+<p class="admonition-title">Coding exercises</p>
+<p>The exercises are designed to apply what you have learned with room for creativity. It is fine to discuss solutions with your classmates, but the actual code should not be directly copied.</p>
+<p>The completed notebooks are to be submitted at the end of class, but you can revist later, experiment with the code, and follow the further reading suggestions.</p>
+</div>
+<section id="your-details">
+<h3><span class="section-number">2.4.1. </span>Your details<a class="headerlink" href="#your-details" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Insert your values</span>
+<span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;No Name&quot;</span> <span class="c1"># Replace with your name</span>
+<span class="n">CID</span> <span class="o">=</span> <span class="mi">123446</span> <span class="c1"># Replace with your College ID (as a numeric value with no leading 0s)</span>
+
+<span class="c1"># Set a random seed using the CID value</span>
+<span class="n">CID</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">CID</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">CID</span><span class="p">)</span>
+
+<span class="c1"># Print the message</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the work of &quot;</span> <span class="o">+</span> <span class="n">Name</span> <span class="o">+</span> <span class="s2">&quot; [CID: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">CID</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tasks">
+<h3><span class="section-number">2.4.2. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this heading">#</a></h3>
+<p>You have one task to complete involving the double perovskite Cs<sub>2</sub>AgBiI<sub>6</sub>:</p>
+<ol class="arabic simple">
+<li><p>Extend the code below to create unique permutations for Ag<sup>+</sup> and Bi<sup>3+</sup> ions in the perovskite supercell. How many unique permutations are there?</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a 2a x 2b x 2c supercell of the cubic CsPbI3 structure</span>
+<span class="n">supercell</span> <span class="o">=</span> <span class="n">CsPbI3</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<span class="n">supercell</span><span class="o">.</span><span class="n">make_supercell</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># doubled in each direction</span>
+
+<span class="c1"># Place Ag+ and Bi3+ on the Pb2+ atomic sites</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+  <span class="n">supercell</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Ag+&#39;</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">):</span>
+  <span class="n">supercell</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Bi3+&#39;</span>
+
+<span class="c1"># Define the set of these B-sites</span>
+<span class="n">b_species</span> <span class="o">=</span> <span class="n">supercell</span><span class="o">.</span><span class="n">species</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">8</span><span class="p">]</span>
+</pre></div>
+</div>
+<p><em>Self-study (optional)</em></p>
+<ol class="arabic simple" start="2">
+<li><p>Generate structures corresponding to the unique permutations of Ag and Bi. This involves substituting the Pb sites in the crystal structure with Ag and Bi. Plot the distribution of electrostatic energies calculated using <code class="docutils literal notranslate"><span class="pre">EwaldSummation</span></code>.</p></li>
+<li><p>Visualise the structures of the lowest energy configurations. Is there anything special about the Ag and Bi arrangement? Remember that in thermodynamic equilibrium, these configurations will be the most abundant (recall <a class="reference external" href="https://en.wikipedia.org/wiki/Boltzmann_distribution">Boltzmann statistics</a>).</p></li>
+</ol>
+<details>
+<summary> Task hint </summary>
+One approach for task 2 involves populating a list of structures, e.g. starting from `Structures = []`.
+</details>
+<div class="note admonition">
+<p class="admonition-title">Submission</p>
+<p>When your notebook is complete, click on the download icon on the top right, select <code class="docutils literal notranslate"><span class="pre">.pdf</span></code>, save the file and upload it to MyDepartment. If you are using Google Colab, you have to print to pdf.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Code block</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Comment block</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Code block</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Comment block</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dive-deeper">
+<h2><span class="section-number">2.5. </span>🌊 Dive deeper<a class="headerlink" href="#dive-deeper" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><em>Level 1:</em> If you are not comfortable with optimisation techniques such as gradient descent, read Chapter 2 of <a class="reference external" href="https://github.com/jermwatt/machine_learning_refined#what-is-new-in-the-second-edition">Machine Learning Refined</a>. Otherwise, skip to Chapter 5 on linear regression.</p></li>
+<li><p><em>Level 2:</em> An introductory review on the Materials Project published in <a class="reference external" href="https://aip.scitation.org/doi/10.1063/1.4812323">APL Materials</a>.</p></li>
+<li><p><em>Level 3:</em> <a class="reference external" href="https://icet.materialsmodeling.org">icet</a> is a powerful Python package for modelling disordered crystals based on the cluster expansion approach.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "aronwalsh/MLforMaterials",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Lecture1.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">1. </span>Introduction</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crystal-electrostatics">2.1. ⚡️ Crystal electrostatics</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#theoretical-background">2.1.1. Theoretical background</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-virtual-perovskite">2.2. Create a virtual perovskite</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#create-a-virtual-double-perovskite">2.3. Create a virtual double perovskite</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#partial-site-occupancies">2.3.1. Partial site occupancies</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-combinatorics">2.3.2. Structure combinatorics</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#permutations-of-a-string">2.3.3. Permutations of a string</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-2-atomic-permutations">2.4. 🚨 Exercise 2: Atomic permutations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-details">2.4.1. Your details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">2.4.2. Tasks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-deeper">2.5. 🌊 Dive deeper</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aron Walsh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
