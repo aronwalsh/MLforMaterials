@@ -14,3 +14,4 @@ parts:
   numbered: true
   chapters:
   - file: Lecture1
+  - file: Lecture2
