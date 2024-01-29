@@ -647,12 +647,12 @@ Check that the chemical formula is correct.</details></section>
 <section id="structure-combinatorics">
 <h3><span class="section-number">2.3.2. </span>Structure combinatorics<a class="headerlink" href="#structure-combinatorics" title="Permalink to this heading">#</a></h3>
 <p>To model a disordered crystal at the nanoscale, one approach is to enumerate all of the different atomic configurations in a supercell. We should consider the disordered sites and calculate the possible permutations (arrangements) of the ions.</p>
-<p>The number of permutations <span class="math notranslate nohighlight">\(\textit{P}\)</span> for a crystallographic site with <span class="math notranslate nohighlight">\(N\)</span> different atoms, which have multiplicities <span class="math notranslate nohighlight">\(m_i\)</span>, for <span class="math notranslate nohighlight">\(i = 1 ... N\)</span> occupying the site can be calculated using the formula for a multi-set permutation:</p>
+<p>The number of permutations <span class="math notranslate nohighlight">\(\textit{P}\)</span> for a crystal with <span class="math notranslate nohighlight">\(N\)</span> different sites, which have multiplicities <span class="math notranslate nohighlight">\(m_i\)</span> for <span class="math notranslate nohighlight">\(i = 1 ... N\)</span> for site occupation, can be calculated using the formula for a multi-set permutation:</p>
 <div class="math notranslate nohighlight">
 \[
-    P(m_1,m_2,...,m_N) = \frac{(m_1+m_2+...+m_N)!}{m_1!m_2!...m_N!}=\frac{(\sum_{i=1}^{N} m_i)!}{\prod_{i=1}^{N} k_i!}
+    P(m_1,m_2,...,m_N) = \frac{(m_1+m_2+...+m_N)!}{m_1!m_2!...m_N!}=\frac{(\sum_{i=1}^{N} m_i)!}{\prod_{i=1}^{N} m_i!}
 \]</div>
-<p>For our double perovskite structure, try to think of how many permutations of Ag and Bi are possible in the <span class="math notranslate nohighlight">\(2\textbf{a} \times 2\textbf{b} \times 2\textbf{c}\)</span> supercell with 8 Pb sites.</p>
+<p>For our double perovskite structure, try to think of how many permutations are possible in the <span class="math notranslate nohighlight">\(2\textbf{a} \times 2\textbf{b} \times 2\textbf{c}\)</span> supercell with 8 Pb sites, which can be occupied by Ag or Bi.</p>
 </section>
 <section id="permutations-of-a-string">
 <h3><span class="section-number">2.3.3. </span>Permutations of a string<a class="headerlink" href="#permutations-of-a-string" title="Permalink to this heading">#</a></h3>
