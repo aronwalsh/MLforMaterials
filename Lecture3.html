@@ -1,0 +1,1218 @@
+
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+    <title>3. Machine Learning Basics &#8212; Machine Learning for Materials</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=5b4479735964841361fd" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=5b4479735964841361fd" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=5b4479735964841361fd" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" href="_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=5b4479735964841361fd" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd" />
+  <script src="_static/vendor/fontawesome/6.1.2/js/all.min.js?digest=5b4479735964841361fd"></script>
+
+    <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script src="_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="_static/design-tabs.js"></script>
+    <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-74ZFK336GP"></script>
+    <script>
+                window.dataLayer = window.dataLayer || [];
+                function gtag(){ dataLayer.push(arguments); }
+                gtag('js', new Date());
+                gtag('config', 'G-74ZFK336GP');
+            </script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'Lecture3';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="2. Materials Modelling" href="Lecture2.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>
+    Back to top
+  </button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+
+  
+
+<a class="navbar-brand logo" href="Overview.html">
+  
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="_static/logo.png" class="logo__image only-light" alt="Machine Learning for Materials - Home"/>
+    <script>document.write(`<img src="_static/logo.png" class="logo__image only-dark" alt="Machine Learning for Materials - Home"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="Overview.html">
+                    Overview
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Course Details</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Contents.html">Course Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Learning.html">Learning Outcomes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Resources.html">Resources</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="Lecture1.html">1. Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lecture2.html">2. Materials Modelling</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">3. Machine Learning Basics</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://mybinder.org/v2/gh/aronwalsh/MLforMaterials/main?urlpath=tree/Lecture3.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onBinder"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_binder.svg">
+  </span>
+<span class="btn__text-container">Binder</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/aronwalsh/MLforMaterials/blob/main/Lecture3.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="initThebeSBT()"
+  class="btn btn-sm btn-launch-thebe dropdown-item"
+  title="Launch Thebe"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-play"></i>
+  </span>
+<span class="btn__text-container">Live Code</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/aronwalsh/MLforMaterials" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="Source repository"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/aronwalsh/MLforMaterials/issues/new?title=Issue%20on%20page%20%2FLecture3.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="Open an issue"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="_sources/Lecture3.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="Download source file"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="Print to PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="Fullscreen mode"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch nav-link" data-mode="light"><i class="fa-solid fa-sun fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="dark"><i class="fa-solid fa-moon fa-lg"></i></span>
+    <span class="theme-switch nav-link" data-mode="auto"><i class="fa-solid fa-circle-half-stroke fa-lg"></i></span>
+  </button>
+`);
+</script>
+
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Machine Learning Basics</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> Contents </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crystal-hardness">3.1. 💎 Crystal hardness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-moduli-dataset">3.2. Bulk moduli dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualise-the-target-variable">3.2.1. Visualise the target variable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-materials">3.3. Features of materials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-based-features">3.3.1. Composition-based features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-based-features">3.3.2. Structure-based features</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-modulus-regression">3.4. Bulk modulus regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">3.4.1. Data preparation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-linear-regression-model">3.4.2. Baseline linear regression model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-regressor">3.4.3. Random forest regressor</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-regressor">3.4.3.1. 1. Create the regressor</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">3.4.3.2. 2. Cross validation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">3.5. Feature importance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-model-optimisation">3.6. 🚨 Exercise 3: Model optimisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-details">3.6.1. Your details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">3.6.2. Tasks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-deeper">3.7. 🌊 Dive deeper</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="machine-learning-basics">
+<h1><span class="section-number">3. </span>Machine Learning Basics<a class="headerlink" href="#machine-learning-basics" title="Permalink to this heading">#</a></h1>
+<div class="tip admonition">
+<p class="admonition-title">Alan Turing</p>
+<p>We are not interested in the fact that the brain has the consistency of cold porridge.</p>
+</div>
+<iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/054e4d175cfc4419842d34f0d47a9b8e" title="Machine Learning for Materials (Lecture 3)" allowfullscreen="true" style="border: 0px; background-clip: padding-box; background-color: rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 420;" data-ratio="1.3333333333333333"></iframe>
+<p><a class="reference external" href="https://speakerdeck.com/aronwalsh/mlformaterials-lecture3-ml">Lecture slides</a></p>
+<section id="crystal-hardness">
+<h2><span class="section-number">3.1. </span>💎 Crystal hardness<a class="headerlink" href="#crystal-hardness" title="Permalink to this heading">#</a></h2>
+<p>Are you excited to tackle a regression problem?</p>
+<p>This week’s dataset consists of the <a class="reference external" href="https://en.wikipedia.org/wiki/Bulk_modulus">bulk modulus</a> for more than 10,000 inorganic crystals. The exercise aims to develop an understanding of how to approach supervised learning problems.</p>
+<p>The energy of a crystal varies with the volume of the unit cell. The equilibrium volume is found at the minimum in the potential energy surface. The shape of this curve can be described by an equation of state, where energy is a function of volume or pressure, i.e. <span class="math notranslate nohighlight">\(E(V)\)</span> or <span class="math notranslate nohighlight">\(E(P)\)</span>. The curvature is related to the bulk modulus <span class="math notranslate nohighlight">\(B\)</span>, which can be defined as:</p>
+<p><span class="math notranslate nohighlight">\(
+B = -V \frac{\partial P}{\partial V} = V \frac{\partial^2 E}{\partial V^2}
+\)</span></p>
+<p>The typical unit of <span class="math notranslate nohighlight">\(B\)</span> is GPa. For example, diamond has has a measured bulk modulus of <span class="math notranslate nohighlight">\(B\)</span> = 443 GPa at T = 4 K. The bulk modulus is a useful quantity in models of materials bonding, thermodynamics, and mechanics. For instance, the inverse of the bulk modulus is the compressability of a crystal (<span class="math notranslate nohighlight">\(\kappa = \frac{1}{B}\)</span>).</p>
+<p>We will make use of the Python package <code class="docutils literal notranslate"><span class="pre">matminer</span></code> (<a class="reference external" href="https://matminer.readthedocs.io">https://matminer.readthedocs.io</a>) to access the materials dataset and featurise the data in a form that is suitable for statistical analysis and building machine learning models. There are many new concepts that will be explored in future lectures, so don’t worry about grasping everything.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Installation of libraries</span>
+<span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>matminer<span class="w"> </span>--quiet
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import of modules</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>  <span class="c1"># Numerical operations</span>
+<span class="kn">from</span> <span class="nn">numpy</span> <span class="kn">import</span> <span class="n">ComplexWarning</span>  <span class="c1"># Warning for complex numbers </span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>  <span class="c1"># Data manipulation with DataFrames</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>  <span class="c1"># Plotting</span>
+<span class="kn">from</span> <span class="nn">pymatgen.core</span> <span class="kn">import</span> <span class="n">Structure</span>  <span class="c1"># Materials analysis for crystal structures</span>
+<span class="kn">from</span> <span class="nn">monty.serialization</span> <span class="kn">import</span> <span class="n">loadfn</span>  <span class="c1"># Load serialised data</span>
+<span class="kn">import</span> <span class="nn">matminer</span>  <span class="c1"># Materials informatics</span>
+<span class="kn">from</span> <span class="nn">matminer.datasets.dataset_retrieval</span> <span class="kn">import</span> <span class="n">load_dataset</span>  <span class="c1"># Load materials datasets</span>
+<span class="kn">import</span> <span class="nn">warnings</span>  <span class="c1"># Warning control</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>  <span class="c1"># Statistical visualisation</span>
+<span class="kn">import</span> <span class="nn">pprint</span>  <span class="c1"># Pretty print data structures</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">style</span><span class="o">.</span><span class="n">use</span><span class="p">(</span><span class="s1">&#39;ggplot&#39;</span><span class="p">)</span>  <span class="c1"># Set Matplotlib style to &#39;ggplot&#39;</span>
+<span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">category</span><span class="o">=</span><span class="n">ComplexWarning</span><span class="p">)</span>  <span class="c1"># Ignore ComplexWarning</span>
+
+<span class="c1"># To make the model run faster</span>
+<span class="n">teaching_mode</span> <span class="o">=</span> <span class="kc">True</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="bulk-moduli-dataset">
+<h2><span class="section-number">3.2. </span>Bulk moduli dataset<a class="headerlink" href="#bulk-moduli-dataset" title="Permalink to this heading">#</a></h2>
+<p>From <code class="docutils literal notranslate"><span class="pre">matminer</span></code>, we can check what datasets are available using the <code class="docutils literal notranslate"><span class="pre">datasets.get_available_datasets()</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the available datasets</span>
+<span class="n">matminer</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">get_available_datasets</span><span class="p">(</span><span class="n">print_format</span><span class="o">=</span><span class="s1">&#39;low&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can use the <code class="docutils literal notranslate"><span class="pre">get_all_dataset_info</span></code> function from the <code class="docutils literal notranslate"><span class="pre">matminer.datasets.dataset_retrieval</span></code> module to output a detailed description of a matminer dataset. Let’s check the information for the <code class="docutils literal notranslate"><span class="pre">matbench_log_kvrh</span></code> dataset. Here “k” relates to the bulk modulus (which we called <span class="math notranslate nohighlight">\(B\)</span>), and and “vrh” relates to the Voigt-Reuss-Hill equation of state, which is one approach to define a value for each material.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">matminer</span><span class="o">.</span><span class="n">datasets</span><span class="o">.</span><span class="n">dataset_retrieval</span><span class="o">.</span><span class="n">get_all_dataset_info</span><span class="p">(</span><span class="s1">&#39;matbench_log_kvrh&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can then load a dataset as a dataframe using the <code class="docutils literal notranslate"><span class="pre">load_dataset</span></code> method.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use matminer to download the dataset</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">load_dataset</span><span class="p">(</span><span class="s1">&#39;matbench_log_kvrh&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The full dataset contains </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> entries. </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="n">teaching_mode</span><span class="p">:</span>
+  <span class="c1"># Store the original dataframe as a copy</span>
+  <span class="n">full_dataset_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+  <span class="c1"># Create a subset of the original dataframe for demonstration purposes</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:</span><span class="mi">1500</span><span class="p">]</span>
+  <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;For teaching purposes we will only work with </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> entries from the dataframe to make the model training and testing faster. </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The dataframe is shown below:&#39;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="visualise-the-target-variable">
+<h3><span class="section-number">3.2.1. </span>Visualise the target variable<a class="headerlink" href="#visualise-the-target-variable" title="Permalink to this heading">#</a></h3>
+<p>We can use <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> to produce summary statistics of the numerical columns in the dataframe. The importance of this is to check whether the data for our target variable, <code class="docutils literal notranslate"><span class="pre">log10(K_VRH)</span></code>, is reasonable. Negative values for the bulk modulus are considered unphysical and forbidden by crystal thermodynamics. You can think about why from the definition.</p>
+<p>As we are working with <code class="docutils literal notranslate"><span class="pre">log10</span></code> of the bulk modulus, it should not be possible for there to be negative values in our target variable column as the logarithm of a negative number is undefined. This also gives us a quick check for the input data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>From the summary statistics, we see that the minimum value for <code class="docutils literal notranslate"><span class="pre">log10(K_VRH)</span></code> is zero, so it appears that there are no glaring issues with the target variable.</p>
+<p>For a better understanding, let’s make a histogram to visualise the distribution. This is best practice when you encounter any new dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Plot a histogram</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">3</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">df22</span><span class="p">[</span><span class="s1">&#39;log10(K_VRH)&#39;</span><span class="p">])</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;$log_</span><span class="si">{10}</span><span class="s1">K_</span><span class="si">{VRH}</span><span class="s1">$ [$log_</span><span class="si">{10}</span><span class="s1">GPa$]&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Counts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details>
+<summary> Code hint </summary>
+Your dataframe is not called df22!
+</details></section>
+</section>
+<section id="features-of-materials">
+<h2><span class="section-number">3.3. </span>Features of materials<a class="headerlink" href="#features-of-materials" title="Permalink to this heading">#</a></h2>
+<p>As you may notice from the dataset, we only have one input feature, the crystal structure. This is not a numerical feature that we can use for a regression model. For our supervised machine learning problem, we must represent each material by a vector that can be used as an input to the model, e.g.</p>
+<div class="math notranslate nohighlight">
+\[f(\textrm{material}) \rightarrow [1.1,0.8,3.5,0.01]\]</div>
+<p>would be a four-dimensional representation.
+For now we will use some pre-selected features from <code class="docutils literal notranslate"><span class="pre">matminer</span></code> for this regression task. Materials representations will be covered in Lecture 4.</p>
+<section id="composition-based-features">
+<h3><span class="section-number">3.3.1. </span>Composition-based features<a class="headerlink" href="#composition-based-features" title="Permalink to this heading">#</a></h3>
+<p>To use the <code class="docutils literal notranslate"><span class="pre">ElementProperty</span></code> featuriser, we first need to add a <code class="docutils literal notranslate"><span class="pre">pymatgen.core.composition.Composition</span></code> object to our dataframe.
+There are several ways to do this but we will proceed using the <code class="docutils literal notranslate"><span class="pre">composition</span></code> property of the pymatgen <code class="docutils literal notranslate"><span class="pre">Structure</span></code> class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">matminer.featurizers.composition.composite</span> <span class="kn">import</span> <span class="n">ElementProperty</span>
+<span class="kn">from</span> <span class="nn">matminer.featurizers.structure.order</span> <span class="kn">import</span> <span class="n">DensityFeatures</span>
+
+<span class="c1"># Add a composition column to df using the composition property of the Structure class and a lambda function</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;composition&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">structure</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">.</span><span class="n">composition</span> <span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The new composition column contains both the elements and the amount of each element in the composition, though in the dataframe this is not evident.</p>
+<p>Let’s use the <code class="docutils literal notranslate"><span class="pre">ElementProperty</span></code> featuriser to add some composition-based features to our dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create the ElementProperty featuriser</span>
+<span class="n">el_prop_featuriser</span> <span class="o">=</span> <span class="n">ElementProperty</span><span class="o">.</span><span class="n">from_preset</span><span class="p">(</span><span class="n">preset_name</span><span class="o">=</span><span class="s1">&#39;magpie&#39;</span><span class="p">)</span>
+
+<span class="c1"># By default multiprocessing is enabled, however this has been known to slow performance on some systems, so we disable it</span>
+<span class="n">el_prop_featuriser</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+
+<span class="c1"># Featurise the dataframe using the ElementProperty featuriser</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">el_prop_featuriser</span><span class="o">.</span><span class="n">featurize_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col_id</span><span class="o">=</span><span class="s1">&#39;composition&#39;</span><span class="p">)</span>
+
+<span class="c1"># Print the shape of the DataFrame</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There are now a lot more columns in the DataFrame. We can check the reference for a property featuriser using the <code class="docutils literal notranslate"><span class="pre">.citations()</span></code> method as shown below.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">el_prop_featuriser</span><span class="o">.</span><span class="n">citations</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="structure-based-features">
+<h3><span class="section-number">3.3.2. </span>Structure-based features<a class="headerlink" href="#structure-based-features" title="Permalink to this heading">#</a></h3>
+<p>Within <code class="docutils literal notranslate"><span class="pre">matminer</span></code>, there are many featurisers which operate on crystal structures. We will add some simple features based on the density of the structures using <code class="docutils literal notranslate"><span class="pre">DensityFeatures</span></code>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Crystal structure to vector</span>
+<span class="n">density_featuriser</span> <span class="o">=</span> <span class="n">DensityFeatures</span><span class="p">()</span>
+<span class="n">density_featuriser</span><span class="o">.</span><span class="n">set_n_jobs</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">df</span><span class="o">=</span><span class="n">density_featuriser</span><span class="o">.</span><span class="n">fit_featurize_dataframe</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col_id</span><span class="o">=</span><span class="s1">&#39;structure&#39;</span><span class="p">)</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="bulk-modulus-regression">
+<h2><span class="section-number">3.4. </span>Bulk modulus regression<a class="headerlink" href="#bulk-modulus-regression" title="Permalink to this heading">#</a></h2>
+<p>With regression tasks, we want to fit a model that maps our input feature <span class="math notranslate nohighlight">\(x\)</span> to our target variable <span class="math notranslate nohighlight">\(y\)</span>, i.e. <span class="math notranslate nohighlight">\(y=f(x)\)</span>. Here, <span class="math notranslate nohighlight">\(x\)</span> and <span class="math notranslate nohighlight">\(y\)</span> are vectors of dimensions <span class="math notranslate nohighlight">\(M\)</span> and <span class="math notranslate nohighlight">\(N\)</span>, respectively, such that <span class="math notranslate nohighlight">\(f: \mathbb{R}^M\rightarrow\mathbb{R}^N\)</span>.</p>
+<p>Supervised machine learning problems generally take the following form:</p>
+<ul class="simple">
+<li><p>Select a form for the model <span class="math notranslate nohighlight">\(f\)</span></p></li>
+<li><p>Determine an error/loss function that is used to evaluate model performance</p></li>
+<li><p>Optimise the parameters of the model to minimise the error</p></li>
+</ul>
+<p>The error, <span class="math notranslate nohighlight">\(L(\hat{y},y)\)</span>, is a function of the predicted target variable <span class="math notranslate nohighlight">\(\hat{\textbf{y}}=f(\textbf{x})\)</span> and the true target variable, <span class="math notranslate nohighlight">\(\textbf{y}\)</span>. We want our model to minimise <span class="math notranslate nohighlight">\(L\)</span>. For our dataset the target variable is <code class="docutils literal notranslate"><span class="pre">log(K_VRH)</span></code>, which we want to predict from knowledge of the composition and structure (represented by the set of chosen features).</p>
+<p>We will make extensive use of <code class="docutils literal notranslate"><span class="pre">scikit-learn</span></code> (<a class="reference external" href="https://scikit-learn.org">https://scikit-learn.org</a>) for these tasks.</p>
+<section id="data-preparation">
+<h3><span class="section-number">3.4.1. </span>Data preparation<a class="headerlink" href="#data-preparation" title="Permalink to this heading">#</a></h3>
+<p>To start, we need to split our dataset into the target variable <code class="docutils literal notranslate"><span class="pre">log10(K_VRH)</span></code> and the input features. For the input features, we must remove any non-numerical data.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Define the features we want in the DataFrame</span>
+<span class="n">features_to_drop</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;structure&#39;</span><span class="p">,</span><span class="s1">&#39;composition&#39;</span><span class="p">,</span><span class="s1">&#39;log10(K_VRH)&#39;</span><span class="p">]</span>
+<span class="n">feature_cols</span> <span class="o">=</span> <span class="p">[</span><span class="n">col</span> <span class="k">for</span> <span class="n">col</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span> <span class="k">if</span> <span class="n">col</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">features_to_drop</span><span class="p">]</span>
+
+<span class="c1"># Get an array of the features</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Get an array of the target variable</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;log10(K_VRH)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Shape of X: </span><span class="si">{</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Shape of y: </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>We can also check the names of the features used for our model.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;We have </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">feature_cols</span><span class="p">)</span><span class="si">}</span><span class="s1"> features in our dataset.&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">features</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details>
+<summary> Code hint </summary>
+Check your print statement!
+</details></section>
+<section id="baseline-linear-regression-model">
+<h3><span class="section-number">3.4.2. </span>Baseline linear regression model<a class="headerlink" href="#baseline-linear-regression-model" title="Permalink to this heading">#</a></h3>
+<p>A simple model is the linear regressor.  For a univariate linear regressor represented by <span class="math notranslate nohighlight">\(\hat{y}=mx+c\)</span>, the task is to find the best value of <span class="math notranslate nohighlight">\(m\)</span> and <span class="math notranslate nohighlight">\(c\)</span> that minimise the model error.</p>
+<p>If we were to consider multivariate linear regression, then our equation transforms to <span class="math notranslate nohighlight">\(\hat{y}=\beta_0 + ∑_1^n\beta_ix_i\)</span>, where <span class="math notranslate nohighlight">\(\beta_i\)</span> are the weights of the model and <span class="math notranslate nohighlight">\(x_i\)</span> are the input features.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Import Linear Regression model</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LinearRegression</span>
+
+<span class="c1"># Fit the model to the data</span>
+<span class="n">lr</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span>
+<span class="n">lr</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># Wrap the lines of code for plots in later sections</span>
+<span class="k">def</span> <span class="nf">make_prediction_plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">label</span><span class="p">):</span>
+    <span class="n">y_pred</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>  <span class="c1"># Calculate predictions here</span>
+    <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y_pred</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1"> True&#39;</span><span class="p">)</span>
+    <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">label</span><span class="si">}</span><span class="s1"> Predicted&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">y_pred</span>  <span class="c1"># Return y_pred</span>
+
+<span class="c1"># Make predictions using the fitted model</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">make_prediction_plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">lr</span><span class="p">,</span> <span class="s1">&#39;log10(K_VRH)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">metrics</span>
+
+<span class="c1"># Mean absolute error</span>
+<span class="nb">print</span> <span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The training MAE = </span><span class="si">{</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> log10GPa&#39;</span><span class="p">)</span>
+
+<span class="c1"># Mean squared error</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The training RMSE = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_pred</span><span class="p">))</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> log10GPa&#39;</span><span class="p">)</span>
+
+<span class="c1"># $r^2$ - coefficient of determination</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The training r^2 = </span><span class="si">{</span><span class="n">lr</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Based on your analysis, is this a useful model?</p>
+</section>
+<section id="random-forest-regressor">
+<h3><span class="section-number">3.4.3. </span>Random forest regressor<a class="headerlink" href="#random-forest-regressor" title="Permalink to this heading">#</a></h3>
+<p>We can do better with a non-linear model. Let’s try a machine learning regressor. <a class="reference external" href="https://en.wikipedia.org/wiki/Random_forest">Random forest</a> is an ensemble machine learning algorithm that combines multiple <a class="reference external" href="https://en.wikipedia.org/wiki/Decision_tree">decision trees</a> to improve predictive accuracy.</p>
+<p>Random forest can be applied to both classification and regression tasks. The prediction is made by taking a majority vote (for classification) or averaging (for regression) of the predictions from individual trees. Mathematically, it can be represented as:</p>
+<p><span class="math notranslate nohighlight">\(
+\hat{y}_{RF} = \frac{1}{n_{trees}} \sum_{i=1}^{n_{trees}} f_i(x)
+\)</span></p>
+<p>where:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\hat{y}_{RF}\)</span> is the random forest prediction.</p></li>
+<li><p><span class="math notranslate nohighlight">\(n_{trees}\)</span> is the number of decision trees in the forest.</p></li>
+<li><p><span class="math notranslate nohighlight">\(f_i(x)\)</span> represents the prediction of the <span class="math notranslate nohighlight">\(i\)</span>-th tree.</p></li>
+</ul>
+<section id="create-the-regressor">
+<h4><span class="section-number">3.4.3.1. </span>1. Create the regressor<a class="headerlink" href="#create-the-regressor" title="Permalink to this heading">#</a></h4>
+<p>In <code class="docutils literal notranslate"><span class="pre">sklearn</span></code>, the random forest regressor is created by:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">criterion</span><span class="o">=&lt;</span><span class="nb">str</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=&lt;</span><span class="nb">int</span><span class="o">&gt;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>The hyperparameters that need to be set are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">n_estimators</span></code>: number of decision trees in the random forest model.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">criterion</span></code>: loss function to be minimised. Default value is ‘squared_error` which is the MSE.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">max_depth</span></code>: maximum depth of the tree.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_sample_split</span></code>: minimum number of samples required to split an internal node.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">min_samples_leaf</span></code>: minimum number of samples required to be at a leaf node.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">RandomForestRegressor</span>
+
+<span class="c1"># Define the model</span>
+<span class="n">rf</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span><span class="n">criterion</span><span class="o">=</span><span class="s1">&#39;squared_error&#39;</span><span class="p">,</span> <span class="n">max_depth</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_samples_leaf</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+
+<span class="c1"># Fit the model</span>
+<span class="n">rf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>You just trained a machine learning model 🎉.  We can now make predictions and plot the results. We will use the plotting function <code class="docutils literal notranslate"><span class="pre">make_prediction_plot()</span></code> that we defined earlier to make the plots.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Linear regression&quot;</span><span class="p">)</span>
+<span class="n">y_pred_lr</span> <span class="o">=</span> <span class="n">make_prediction_plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">lr</span><span class="p">,</span><span class="s1">&#39;log10(K_VRH)&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Random Forest model&quot;</span><span class="p">)</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="n">make_prediction_plot</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">,</span><span class="n">rf</span><span class="p">,</span><span class="s1">&#39;log10(K_VRH)&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>Now let’s quantify the performance of the random forest model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the metrics</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The training MAE = </span><span class="si">{</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_pred</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> log10GPa&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The training RMSE = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">metrics</span><span class="o">.</span><span class="n">mean_squared_error</span><span class="p">(</span><span class="n">y</span><span class="p">,</span><span class="n">y_pred</span><span class="p">))</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> log10GPa&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The training r^2 = </span><span class="si">{</span><span class="n">rf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">y</span><span class="p">)</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>The coefficient of determination, <span class="math notranslate nohighlight">\(r^2\)</span>, as well as the low RMSE suggest that this model is performs well. However, it is also likely that the model is simply overly-fitted to reproduce the training data. This means that it will not generalise to other materials (unseen data), which is necessary for a meaningful machine learning model.</p>
+</section>
+<section id="cross-validation">
+<h4><span class="section-number">3.4.3.2. </span>2. Cross validation<a class="headerlink" href="#cross-validation" title="Permalink to this heading">#</a></h4>
+<p>To better determine the quality of our model, we can peform cross-validation (CV). CV enables us to evaluate the out-of-sample goodness-of-fit of a regressor. We will use <span class="math notranslate nohighlight">\(k\)</span>-fold CV. This method splits the training set into k subsets. Each subset is used as a validation set to evaluate the performance of the model, with the model being trained on the remaining <span class="math notranslate nohighlight">\(k-1\)</span> subsets.</p>
+<p>Let’s perform 5-fold CV (for demonstration purposes):</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">KFold</span><span class="p">,</span> <span class="n">cross_val_score</span><span class="p">,</span> <span class="n">cross_validate</span>
+
+<span class="c1"># Define the number of splits for cross-validation</span>
+<span class="n">n_splits</span> <span class="o">=</span> <span class="mi">5</span> <span class="k">if</span> <span class="n">teaching_mode</span> <span class="k">else</span> <span class="mi">10</span>
+
+<span class="c1"># Compute the cross-validation score</span>
+<span class="n">cv</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span>
+    <span class="n">n_splits</span><span class="o">=</span><span class="n">n_splits</span><span class="p">,</span>
+    <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span>
+    <span class="p">)</span>
+
+<span class="n">scores</span><span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span><span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;neg_mean_absolute_error&#39;</span><span class="p">)</span>
+
+<span class="n">r2_scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">,</span> <span class="n">scoring</span><span class="o">=</span><span class="s1">&#39;r2&#39;</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;From our cross-validation, we have obtained the following results:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mean MAE = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">scores</span><span class="p">))</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1"> log10GPa&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;mean r^2 = </span><span class="si">{</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">r2_scores</span><span class="p">))</span><span class="si">:</span><span class="s1">.3f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>From our cross-validation, we have obtained the following results:
+mean MAE = 0.095 log10GPa
+mean r^2 = 0.845
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Show the training scores for each k-fold</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span> 
+
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">scores</span><span class="p">))],</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">scores</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">scores</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">scatter</span><span class="p">([</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">r2_scores</span><span class="p">))],</span> <span class="n">np</span><span class="o">.</span><span class="n">abs</span><span class="p">(</span><span class="n">r2_scores</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">r2_scores</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">)</span> 
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Training fold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;MAE&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">0.14</span><span class="p">)</span> 
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Training fold&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;r$^2$&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">set_ylim</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>  
+
+<span class="c1"># Display the plot</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>  
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is an increase in the error (decrease in performance) for the CV model. However, the MAE is still reasonable. Let’s visualise the result of the final model:</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span>
+
+<span class="c1"># Plot the original and predicted data against each other</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Scatter plot with color</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">rf</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">cv</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="n">y</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;viridis&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Predicted&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.6</span><span class="p">)</span>
+
+<span class="c1"># Red line representing a perfect prediction (y = x)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">&#39;r-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Perfect Prediction&#39;</span><span class="p">)</span>
+
+<span class="c1"># Set labels and legend</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;K_VRH True&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;K_VRH Predicted&#39;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">legend</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="feature-importance">
+<h2><span class="section-number">3.5. </span>Feature importance<a class="headerlink" href="#feature-importance" title="Permalink to this heading">#</a></h2>
+<p>We simply fed in a number of materials features, but which ones were most useful? Understanding this will increase the interpretability of the model.</p>
+<p>We can see how particular features contribute to a Random Forest model by looking at the <code class="docutils literal notranslate"><span class="pre">RandomForestRegressor().feature_importances_</span></code> attribute. Some features are significant, whereas others offer very little contribution.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get the feature importances</span>
+<span class="n">importances</span> <span class="o">=</span> <span class="n">rf</span><span class="o">.</span><span class="n">feature_importances_</span>
+
+<span class="c1"># Get the indices that would sort the importances array from largest to smallest</span>
+<span class="n">indices</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># Create a figure and axis for the plot</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Create a bar plot of the feature importance</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]),</span> <span class="n">importances</span><span class="p">[</span><span class="n">indices</span><span class="p">],</span> <span class="n">color</span><span class="o">=</span><span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">align</span><span class="o">=</span><span class="s2">&quot;center&quot;</span><span class="p">)</span>
+
+<span class="c1"># Set the labels</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Feature Index&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Feature Importance&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Importance&quot;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>There is a rapid drop off in the feature importance, with few features offering a significant contribution to the model.</p>
+<p>Below we will only plot the importance for the top-<span class="math notranslate nohighlight">\(N\)</span> features. I guess the top feature is <code class="docutils literal notranslate"><span class="pre">vpa</span></code> (Volume per atom). Try a value of 5.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Visualise the top N features</span>
+<span class="n">N</span> <span class="o">=</span> 
+
+<span class="c1"># Get the names of the top N important features</span>
+<span class="n">top_feature_names</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">feature_cols</span><span class="p">]</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="n">N</span><span class="p">]]</span>
+
+<span class="c1"># Set up the figure and axis</span>
+<span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
+
+<span class="c1"># Create a bar plot of the top N feature importances</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">top_feature_names</span><span class="p">,</span> <span class="n">height</span><span class="o">=</span><span class="n">importances</span><span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">importances</span><span class="p">)[::</span><span class="o">-</span><span class="mi">1</span><span class="p">][:</span><span class="n">N</span><span class="p">]])</span>
+
+<span class="c1"># Set the labels and title</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s2">&quot;Feature&quot;</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_title</span><span class="p">(</span><span class="s2">&quot;Top </span><span class="si">{}</span><span class="s2"> Feature Importance&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">N</span><span class="p">))</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s2">&quot;Importance&quot;</span><span class="p">)</span>
+
+<span class="c1"># Rotate x-axis labels for better readability</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticklabels</span><span class="p">(</span><span class="n">top_feature_names</span><span class="p">,</span> <span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">,</span> <span class="n">ha</span><span class="o">=</span><span class="s1">&#39;right&#39;</span><span class="p">,</span> <span class="n">rotation_mode</span><span class="o">=</span><span class="s1">&#39;anchor&#39;</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="c1"># Print them too</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Top </span><span class="si">{</span><span class="n">N</span><span class="si">}</span><span class="s2"> Features:&quot;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">feat</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;    </span><span class="si">{</span><span class="n">feat</span><span class="o">+</span><span class="mi">1</span><span class="si">}</span><span class="s2">. </span><span class="si">{</span><span class="n">feature_cols</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">feat</span><span class="p">]]</span><span class="si">}</span><span class="s2"> (</span><span class="si">{</span><span class="n">importances</span><span class="p">[</span><span class="n">indices</span><span class="p">[</span><span class="n">feat</span><span class="p">]]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<details>
+<summary> Code hint </summary>
+Remember to set N!
+</details></section>
+<section id="exercise-3-model-optimisation">
+<h2><span class="section-number">3.6. </span>🚨 Exercise 3: Model optimisation<a class="headerlink" href="#exercise-3-model-optimisation" title="Permalink to this heading">#</a></h2>
+<div class="note admonition">
+<p class="admonition-title">Coding exercises</p>
+<p>The exercises are designed to apply what you have learned with room for creativity. It is fine to discuss solutions with your classmates, but the actual code should not be directly copied.</p>
+<p>The completed notebooks are to be submitted at the end of class, but you can revisit later, experiment with the code, and follow the further reading suggestions.</p>
+</div>
+<section id="your-details">
+<h3><span class="section-number">3.6.1. </span>Your details<a class="headerlink" href="#your-details" title="Permalink to this heading">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+
+<span class="c1"># Insert your values</span>
+<span class="n">Name</span> <span class="o">=</span> <span class="s2">&quot;No Name&quot;</span> <span class="c1"># Replace with your name</span>
+<span class="n">CID</span> <span class="o">=</span> <span class="mi">123446</span> <span class="c1"># Replace with your College ID (as a numeric value with no leading 0s)</span>
+
+<span class="c1"># Set a random seed using the CID value</span>
+<span class="n">CID</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">CID</span><span class="p">)</span>
+<span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="n">CID</span><span class="p">)</span>
+
+<span class="c1"># Print the message</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is the work of &quot;</span> <span class="o">+</span> <span class="n">Name</span> <span class="o">+</span> <span class="s2">&quot; [CID: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">CID</span><span class="p">)</span> <span class="o">+</span> <span class="s2">&quot;]&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tasks">
+<h3><span class="section-number">3.6.2. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this heading">#</a></h3>
+<p>It is often desirable to fit a model with fewer features. This can improve model simplicity, reduce overfitting, and enhance generalisation. From your feature importance analysis, it is clear that not all features are necessary.</p>
+<p>You have one task to complete:</p>
+<ol class="arabic simple">
+<li><p>Extend the code below to build a random forest regressor using the 10 most important features. Compare the performance to the original model and comment on whether the important features are physically intuitive.</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Most important features</span>
+<span class="n">cols_top10</span> <span class="o">=</span> <span class="p">[</span><span class="n">feature_cols</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">indices</span><span class="p">[:</span><span class="mi">10</span><span class="p">]]</span>
+
+<span class="c1"># Array of the top features</span>
+<span class="n">X_top10</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">cols_top10</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+
+<span class="c1"># Array of the target variable</span>
+<span class="n">y_top10</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;log10(K_VRH)&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+</pre></div>
+</div>
+<p><em>Self-study (optional)</em></p>
+<ol class="arabic simple" start="2">
+<li><p>Test the model performance as a function of the number of features. Is the performance change continuous?</p></li>
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">teaching_mode=False</span></code> and retrain the model using the larger dataset. Note that this requires a significant amount of time to complete due to both the amount of data and the 10-fold CV.  What has changed by using the full dataset? See if the top 10 features remain the same.</p></li>
+</ol>
+<details>
+<summary> Task hint </summary>
+For task 2, one approach is to define the number of features as a variable and loop over it
+</details>
+<div class="note admonition">
+<p class="admonition-title">Submission</p>
+<p>When your notebook is complete, click on the download icon on the top right, select <code class="docutils literal notranslate"><span class="pre">.pdf</span></code>, save the file and upload it to MyDepartment. If you are using Google Colab, you have to print to pdf.</p>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Code block</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Comment block</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Code block</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Comment block</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dive-deeper">
+<h2><span class="section-number">3.7. </span>🌊 Dive deeper<a class="headerlink" href="#dive-deeper" title="Permalink to this heading">#</a></h2>
+<ul class="simple">
+<li><p><em>Level 1:</em> Tackle Chapter 14 on Tree-Based Learners in <a class="reference external" href="https://github.com/jermwatt/machine_learning_refined#what-is-new-in-the-second-edition">Machine Learning Refined</a>.</p></li>
+<li><p><em>Level 2:</em> A collection of videos from the <a class="reference external" href="https://www.youtube.com/playlist?list=PLTjFYVNE7LTi6kGvPAF7DDQYj0KDL-vQL">Materials Project Workshop</a> on advanced Python.</p></li>
+<li><p><em>Level 3:</em> Read more about the <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/index.html">scikit-learn</a> package and what it can do.</p></li>
+</ul>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "aronwalsh/MLforMaterials",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+              
+              
+                <footer class="prev-next-footer">
+                  
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="Lecture2.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title"><span class="section-number">2. </span>Materials Modelling</p>
+      </div>
+    </a>
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> Contents
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#crystal-hardness">3.1. 💎 Crystal hardness</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-moduli-dataset">3.2. Bulk moduli dataset</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#visualise-the-target-variable">3.2.1. Visualise the target variable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#features-of-materials">3.3. Features of materials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#composition-based-features">3.3.1. Composition-based features</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#structure-based-features">3.3.2. Structure-based features</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#bulk-modulus-regression">3.4. Bulk modulus regression</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-preparation">3.4.1. Data preparation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#baseline-linear-regression-model">3.4.2. Baseline linear regression model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#random-forest-regressor">3.4.3. Random forest regressor</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#create-the-regressor">3.4.3.1. 1. Create the regressor</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#cross-validation">3.4.3.2. 2. Cross validation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#feature-importance">3.5. Feature importance</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-3-model-optimisation">3.6. 🚨 Exercise 3: Model optimisation</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-details">3.6.1. Your details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">3.6.2. Tasks</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-deeper">3.7. 🌊 Dive deeper</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+By Aron Walsh
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+
+  <p class="copyright">
+    
+      © Copyright 2024.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=5b4479735964841361fd"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=5b4479735964841361fd"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
