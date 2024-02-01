@@ -531,8 +531,8 @@ Most computational databases are based on the properties of static crystals. In 
 </div>
 </div>
 <details>
-<summary>Error solution</summary>
-If running the import module cell fails with an "AttributeError" in Colab, click `Runtime` -> `Restart Session` and then simply rerun the cell. </section>
+<summary>Colab error solution</summary>
+If running the import module cell fails with an "AttributeError", click `Runtime` -> `Restart Session` and then simply rerun the cell. </section>
 </section>
 <section id="database-access">
 <h2><span class="section-number">4.2. </span>Database access<a class="headerlink" href="#database-access" title="Permalink to this heading">#</a></h2>
@@ -611,7 +611,7 @@ If the cell fails, check that your API_KEY has no spaces before or after the str
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Query for binary and ternary oxides</span>
-<span class="k">with</span> <span class="n">MPRester</span><span class="p">(</span><span class="n">Replace</span><span class="p">)</span> <span class="k">as</span> <span class="n">mpr</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">MPRester</span><span class="p">(</span><span class="n">FBI_KEY</span><span class="p">,</span> <span class="n">use_document_model</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">mpr</span><span class="p">:</span>
     <span class="n">docs</span> <span class="o">=</span> <span class="n">mpr</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
         <span class="n">elements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;O&quot;</span><span class="p">],</span>
         <span class="n">band_gap</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">),</span>
@@ -626,87 +626,14 @@ If the cell fails, check that your API_KEY has no spaces before or after the str
 </div>
 <details>
 <summary> Code hint </summary>
-MPRester needs API_KEY as input. Replace!
+MPRester needs API_KEY as input, not FBI_KEY. Replace!
 </details><div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the first query result</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>We can observe a shorter <code class="docutils literal notranslate"><span class="pre">MPDataDoc</span></code> object as we have only returned the fields that we are interested in.
-The <code class="docutils literal notranslate"><span class="pre">MPDataDoc</span></code> object can also be viewed in the form of a dictionary by using the <code class="docutils literal notranslate"><span class="pre">.dict()</span></code> method. This could be useful for displaying the data in another format.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the first query result into a dictionary</span>
-<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dict</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>There are three things that we can notice from the dictionary. Firstly, the keys are the same as the attributes of the <code class="docutils literal notranslate"><span class="pre">MPDataDoc</span></code> object. Secondly, the keys corresponding to the properties not requested have values of <code class="docutils literal notranslate"><span class="pre">None</span></code>. Finally, we have a key called <code class="docutils literal notranslate"><span class="pre">fields_not_requested</span></code>. It’s value is a list of the properties that were not requested.</p>
-<p>One of the keys in this dictionary is <code class="docutils literal notranslate"><span class="pre">fields_not_requested</span></code>. This is not necessarily useful for us. We can exclude it by passing a python <code class="docutils literal notranslate"><span class="pre">set()</span></code> of the fields to be excluded to the argument <code class="docutils literal notranslate"><span class="pre">exclude</span></code>. For example, the code below would return a dictionary without the <code class="docutils literal notranslate"><span class="pre">fields_not_requested</span></code> key:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fields_not_requested&#39;</span><span class="p">})</span>
-</pre></div>
-</div>
-<p>The MPDataDoc is derived from a package called <code class="docutils literal notranslate"><span class="pre">pydantic</span></code>. For those who want to look at some of the other arguments to the <code class="docutils literal notranslate"><span class="pre">dict()</span></code> method of the <code class="docutils literal notranslate"><span class="pre">MPDataDoc</span></code> object, then they can be found in the <code class="docutils literal notranslate"><span class="pre">pydantic</span></code> <span class="xref myst">documentation</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># See how the dictionary compares to the prior code cell</span>
-<span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fields_not_requested&#39;</span><span class="p">})</span>
-</pre></div>
-</div>
-</div>
-</div>
-<p>However, we still have a dictionary that contains many keys with values of <code class="docutils literal notranslate"><span class="pre">None</span></code>. We can remove these using a dictionary comprehension. This is a way of creating a dictionary from an existing dictionary, but with conditions applied. In this case, we will only add a key-value pair to the new dictionary if the value is not <code class="docutils literal notranslate"><span class="pre">None</span></code>. The code below demonstrates this.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create a new dictionary with only the key-value pairs that have a value that is not None</span>
-<span class="n">new_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fields_not_requested&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">}</span>
-<span class="n">pprint</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">new_dict</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<details>
-<summary> Further code explanation</summary>
-Most computational databases are based on the properties of static crystals. In reality, temperature influences the structures and properties of crystals. We have to start somewhere, but keep this in mind when judging the utility of derived models.
-<p>To explain the code above, we will break it down into two parts. The first part is the dictionary comprehension itself:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fields_not_requested&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">}</span>
-</pre></div>
-</div>
-<p>The second part is the <code class="docutils literal notranslate"><span class="pre">if</span></code> statement at the end:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-</pre></div>
-</div>
-<p>The <code class="docutils literal notranslate"><span class="pre">if</span></code> statement is applied to each key-value pair in the dictionary. If the value is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, then the key-value pair is added to the new dictionary. If the value is <code class="docutils literal notranslate"><span class="pre">None</span></code>, then the key-value pair is not added to the new dictionary.</p>
-<p>The dictionary comprehension is a concise way of writing the following code:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">new_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fields_not_requested&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-        <span class="n">new_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">value</span>
-</pre></div>
-</div>
-<p>The code above is a for loop that iterates through each key-value pair in the dictionary. If the value is not <code class="docutils literal notranslate"><span class="pre">None</span></code>, then the key-value pair is added to the new dictionary. If the value is <code class="docutils literal notranslate"><span class="pre">None</span></code>, then the key-value pair is not added to the new dictionary.</p>
-</details><p>The result is a more concise dictionary that can be easily converted into a DataFrame. This is a useful approach for further processing and/or manipulating the data.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Function to convert the MPDataDoc objects into dictionaries with populated key-value pairs</span>
-<span class="k">def</span> <span class="nf">convert_to_dict</span><span class="p">(</span><span class="n">doc</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Converts an MPDataDoc object into a dictionary with only the key-value pairs that have a value that is not None.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="p">{</span><span class="n">key</span><span class="p">:</span> <span class="n">value</span> <span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">doc</span><span class="o">.</span><span class="n">dict</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="p">{</span><span class="s1">&#39;fields_not_requested&#39;</span><span class="p">})</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">value</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">}</span>
-
-<span class="c1"># Convert all the query data in docs into dictionaries</span>
-<span class="n">docs_dict</span> <span class="o">=</span> <span class="p">[</span><span class="n">convert_to_dict</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span>
-
-<span class="c1"># Convert the list of dictionaries into a DataFrame</span>
-<span class="n">docs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">docs_dict</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the list of dictionaries into a DataFrame</span>
+<span class="n">docs_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
 
 <span class="c1"># Display the first few rows of the DataFrame</span>
-<span class="n">docs_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">docs_df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span>
 </pre></div>
 </div>
 </div>
@@ -714,7 +641,7 @@ Most computational databases are based on the properties of static crystals. In 
 <details>
 <summary> Code hint </summary>
 Check that all brackets are closed...
-</details><p>You have just converted the query data into a DataFrame! This gives access to efficient methods to summarise the data. For example, we can use <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> for summary statistics for the numerical columns. Run the cell below to see the summary statistics for the numerical columns.</p>
+</details><p>By converting the query data into a DataFrame, we have access to efficient methods to summarise the data. For example, we can use <code class="docutils literal notranslate"><span class="pre">.describe()</span></code> for summary statistics for the numerical columns. Run the cell below to see the summary statistics for the numerical columns.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Get summary statistics for the numerical columns in the DataFrame</span>
@@ -748,25 +675,18 @@ Check that all brackets are closed...
 <p>We can query for all the oxygen-containing materials using the <code class="docutils literal notranslate"><span class="pre">elements</span></code> argument and setting it to <code class="docutils literal notranslate"><span class="pre">[&quot;O&quot;]</span></code>. We can also specify the number of elements in the material by using the <code class="docutils literal notranslate"><span class="pre">num_elements</span></code> argument. We will set this to <code class="docutils literal notranslate"><span class="pre">(2,3)</span></code> to specify that we want materials with 2-3 elements. We will also specify the properties that we want returned by using the <code class="docutils literal notranslate"><span class="pre">fields</span></code> argument.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This may take two or three minutes to run - be patient!</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># This may take two minutes to run - be patient!</span>
 
 <span class="c1"># Query for binary and ternary oxides</span>
-<span class="k">with</span> <span class="n">MPRester</span><span class="p">(</span><span class="n">API_KEY</span><span class="p">)</span> <span class="k">as</span> <span class="n">mpr</span><span class="p">:</span>
+<span class="k">with</span> <span class="n">MPRester</span><span class="p">(</span><span class="n">API_KEY</span><span class="p">,</span> <span class="n">use_document_model</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">mpr</span><span class="p">:</span>
     <span class="n">oxide_docs</span> <span class="o">=</span> <span class="n">mpr</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
         <span class="n">elements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;O&quot;</span><span class="p">],</span>
         <span class="n">num_elements</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
         <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;material_id&#39;</span><span class="p">,</span><span class="s1">&#39;formula_pretty&#39;</span><span class="p">,</span><span class="s1">&#39;elements&#39;</span><span class="p">,</span><span class="s1">&#39;nelements&#39;</span><span class="p">,</span><span class="s1">&#39;formula_anonymous&#39;</span><span class="p">,</span><span class="s1">&#39;symmetry.number&#39;</span><span class="p">,</span><span class="s1">&#39;volume&#39;</span><span class="p">,</span><span class="s1">&#39;formation_energy_per_atom&#39;</span><span class="p">,</span><span class="s1">&#39;band_gap&#39;</span><span class="p">]</span>
        <span class="p">)</span>
-
-<span class="c1"># Function to convert the MPDataDoc objects into a DataFrame</span>
-<span class="k">def</span> <span class="nf">convert_to_df</span><span class="p">(</span><span class="n">docs</span><span class="p">):</span>
-<span class="w">    </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Converts an MPDataDoc object into a DataFrame.</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="k">return</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([</span><span class="n">convert_to_dict</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">])</span>
-
+    
 <span class="c1"># Convert the query results into a DataFrame</span>
-<span class="n">oxide_df</span> <span class="o">=</span> <span class="n">convert_to_df</span><span class="p">(</span><span class="n">oxide_docs</span><span class="p">)</span>
+<span class="n">oxide_df</span><span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">oxide_docs</span><span class="p">)</span>
 
 <span class="c1"># Display the first few rows of the DataFrame</span>
 <span class="n">oxide_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -774,7 +694,7 @@ Check that all brackets are closed...
 </div>
 </div>
 </div>
-<p>We now have a DataFrame with the properties we requested. However, the symmetry is still in dictionary form. This type of issue arises many times in data pre-processing for machine learning models.</p>
+<p>We now have a DataFrame with the properties that we requested. However, the symmetry is still in dictionary form. This type of issue arises many times in data pre-processing for machine learning models.</p>
 <p>The <code class="docutils literal notranslate"><span class="pre">symmetry</span></code> property contains key value pairs  of the symmetry data: <code class="docutils literal notranslate"><span class="pre">number</span></code>, <code class="docutils literal notranslate"><span class="pre">symbol</span></code>, <code class="docutils literal notranslate"><span class="pre">crystal_system</span></code>, <code class="docutils literal notranslate"><span class="pre">point_group</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">version</span></code>. With the exception of <code class="docutils literal notranslate"><span class="pre">number</span></code>, these are all currently <code class="docutils literal notranslate"><span class="pre">None</span></code> as we only requested the property <code class="docutils literal notranslate"><span class="pre">symmetry.number</span></code>. We can convert the <code class="docutils literal notranslate"><span class="pre">symmetry</span></code> into a column of the DataFrame using <code class="docutils literal notranslate"><span class="pre">.apply()</span></code>. This method applies a function to each row of the DataFrame. In this case, we will apply a function that returns the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> key of the <code class="docutils literal notranslate"><span class="pre">symmetry</span></code> dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -820,6 +740,7 @@ Check that all brackets are closed...
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">&#39;Number of elements&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_ylabel</span><span class="p">(</span><span class="s1">&#39;Number of materials&#39;</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">bar_label</span><span class="p">(</span><span class="n">bars</span><span class="p">)</span>
+<span class="n">ax</span><span class="o">.</span><span class="n">set_xticks</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">component_count</span><span class="o">.</span><span class="n">index</span><span class="p">)),</span> <span class="nb">int</span><span class="p">(</span><span class="nb">max</span><span class="p">(</span><span class="n">component_count</span><span class="o">.</span><span class="n">index</span><span class="p">))</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">(</span>
 </pre></div>
