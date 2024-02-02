@@ -605,21 +605,21 @@ If the cell fails, check that your API_KEY has no spaces before or after the str
 <ul class="simple">
 <li><p>a band gap between 0.5 and 1.5 eV: <code class="docutils literal notranslate"><span class="pre">band_gap=(0.5,1.5)</span></code></p></li>
 <li><p>two elements: <code class="docutils literal notranslate"><span class="pre">num_elements=(2,3)</span></code></p></li>
-<li><p>contains oxygen: <code class="docutils literal notranslate"><span class="pre">elements=[&quot;O&quot;]</span></code></p></li>
+<li><p>contains lithium: <code class="docutils literal notranslate"><span class="pre">elements=[&quot;Li&quot;]</span></code></p></li>
 </ul>
 <p>We want to return the following properties: <code class="docutils literal notranslate"><span class="pre">material_id</span></code>,<code class="docutils literal notranslate"><span class="pre">formula_pretty</span></code> ,<code class="docutils literal notranslate"><span class="pre">band_gap</span></code>, <code class="docutils literal notranslate"><span class="pre">theoretical</span></code>, <code class="docutils literal notranslate"><span class="pre">is_stable</span></code>.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Query for binary and ternary oxides</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Query for binary and ternary Li compounds with compact output</span>
 <span class="k">with</span> <span class="n">MPRester</span><span class="p">(</span><span class="n">FBI_KEY</span><span class="p">,</span> <span class="n">use_document_model</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span> <span class="k">as</span> <span class="n">mpr</span><span class="p">:</span>
     <span class="n">docs</span> <span class="o">=</span> <span class="n">mpr</span><span class="o">.</span><span class="n">materials</span><span class="o">.</span><span class="n">summary</span><span class="o">.</span><span class="n">search</span><span class="p">(</span>
-        <span class="n">elements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;O&quot;</span><span class="p">],</span>
+        <span class="n">elements</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;Li&quot;</span><span class="p">],</span>
         <span class="n">band_gap</span><span class="o">=</span><span class="p">(</span><span class="mf">0.5</span><span class="p">,</span><span class="mf">1.5</span><span class="p">),</span>
         <span class="n">num_elements</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">),</span>
         <span class="n">fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;material_id&#39;</span><span class="p">,</span> <span class="s1">&#39;formula_pretty&#39;</span><span class="p">,</span><span class="s1">&#39;band_gap&#39;</span><span class="p">,</span><span class="s1">&#39;is_stable&#39;</span><span class="p">,</span> <span class="s1">&#39;theoretical&#39;</span><span class="p">]</span>
        <span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of binary and ternary oxides with band gap between 0.5 and 1.5 eV: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of binary and ternary Li containing compounds with a band gap between 0.5 and 1.5 eV: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -695,7 +695,7 @@ Check that all brackets are closed...
 </div>
 </div>
 <p>We now have a DataFrame with the properties that we requested. However, the symmetry is still in dictionary form. This type of issue arises many times in data pre-processing for machine learning models.</p>
-<p>The <code class="docutils literal notranslate"><span class="pre">symmetry</span></code> property contains key value pairs  of the symmetry data: <code class="docutils literal notranslate"><span class="pre">number</span></code>, <code class="docutils literal notranslate"><span class="pre">symbol</span></code>, <code class="docutils literal notranslate"><span class="pre">crystal_system</span></code>, <code class="docutils literal notranslate"><span class="pre">point_group</span></code>, <code class="docutils literal notranslate"><span class="pre">source</span></code>, <code class="docutils literal notranslate"><span class="pre">version</span></code>. With the exception of <code class="docutils literal notranslate"><span class="pre">number</span></code>, these are all currently <code class="docutils literal notranslate"><span class="pre">None</span></code> as we only requested the property <code class="docutils literal notranslate"><span class="pre">symmetry.number</span></code>. We can convert the <code class="docutils literal notranslate"><span class="pre">symmetry</span></code> into a column of the DataFrame using <code class="docutils literal notranslate"><span class="pre">.apply()</span></code>. This method applies a function to each row of the DataFrame. In this case, we will apply a function that returns the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> key of the <code class="docutils literal notranslate"><span class="pre">symmetry</span></code> dictionary.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">symmetry</span></code> property contains key value pairs  of the symmetry data. We can convert the <code class="docutils literal notranslate"><span class="pre">symmetry</span></code> into a column of the DataFrame using <code class="docutils literal notranslate"><span class="pre">.apply()</span></code>. This method applies a function to each row of the DataFrame. In this case, we will apply a function that returns the value of the <code class="docutils literal notranslate"><span class="pre">number</span></code> key of the <code class="docutils literal notranslate"><span class="pre">symmetry</span></code> dictionary.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert the symmetry property into a column of the DataFrame called &quot;symmetry.number&quot;</span>
@@ -707,13 +707,13 @@ Check that all brackets are closed...
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="k">return</span> <span class="n">symmetry</span><span class="p">[</span><span class="s2">&quot;number&quot;</span><span class="p">]</span>
 
-<span class="c1"># Apply the function to each row of the dataframe</span>
+<span class="c1"># Apply the function to each row of the DataFrame</span>
 <span class="n">oxide_df</span><span class="p">[</span><span class="s2">&quot;symmetry.number&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">oxide_df</span><span class="p">[</span><span class="s2">&quot;symmetry&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">get_spacegroup_number</span><span class="p">)</span>
 
-<span class="c1"># Drop the &quot;symmetry&quot; column from the dataframe</span>
+<span class="c1"># Drop the &quot;symmetry&quot; column from the DataFrame</span>
 <span class="n">oxide_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;symmetry&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="c1"># Display the first few rows of the dataframe</span>
+<span class="c1"># Display the first few rows of the DataFrame</span>
 <span class="n">oxide_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
