@@ -34,13 +34,13 @@
 	* _k_-nearest neighbours
 	* _k_-means clustering
 	* Decision trees and beyond
-	* _Exercise: Metal or insulator_ 
+	* _Exercise: Metal or insulator?_ 
 
 6. **Artificial Neural Networks**
 	* From neuron to perceptron
 	* Network architecture and training
 	* Convolutional neural networks   
-	* _Exercise: Microstructure_ 
+	* _Exercise: Learning microstructure_ 
 
 7. **Building a Model from Scratch**
 	* Data preparation
