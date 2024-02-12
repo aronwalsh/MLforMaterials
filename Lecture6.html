@@ -453,23 +453,24 @@ document.write(`
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-microstructure">6.1. 🔬 Learning microstructure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-perceptrons-to-neural-networks">6.2. From perceptrons to neural networks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-convolutional-filters">6.2.1. Custom convolutional filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-perceptrons-to-neural-networks">6.2. From perceptrons to neural networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-processing">6.3. Image processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-convolutional-filters">6.3.1. Custom convolutional filters</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-neural-networks-cnns">6.3. Convolutional Neural Networks (CNNs)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fashionable-cnn">6.3.1. Fashionable CNN</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learned-filters">6.3.2. Learned filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-neural-networks-cnns">6.4. Convolutional Neural Networks (CNNs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fashionable-cnn">6.4.1. Fashionable CNN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learned-filters">6.4.2. Learned filters</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-microscopy-data">6.4. Synthetic microscopy data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-heterogeneous-materials">6.5. 🚨 Exercise 6: Heterogeneous materials</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-details">6.5.1. Your details</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">6.5.2. Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">6.5.3. Tasks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-microscopy-data">6.5. Synthetic microscopy data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-heterogeneous-materials">6.6. 🚨 Exercise 6: Heterogeneous materials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-details">6.6.1. Your details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">6.6.2. Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">6.6.3. Tasks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-deeper">6.6. 🌊 Dive deeper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-deeper">6.7. 🌊 Dive deeper</a></li>
 </ul>
             </nav>
         </div>
@@ -591,7 +592,7 @@ You want to define `weighted_sum`, not add it to the inputs!
 <summary> Why do we set a random seed?</summary>
 np.random() generates pseudorandom numbers. The algorithm starts with an initial seed value and then produces a sequence of numbers that appears random. However, since the process is deterministic, providing the same seed will result in the same sequence of "random" numbers. 42 is simply a science fiction reference. 
 </details>
-<p>That was fun, but a lone perceptron is limited in terms of the behaviour it can represent. How could we simulate a more realistic phase diagram that contains more than two regions? Let’s code a neural network!</p>
+<p>That was fun, but a lone perceptron is limited in terms of the behaviour it can represent. How could we simulate more realistic phase behaviour? Let’s code a neural network!</p>
 <p>Here the sigmoid activation function is used, which can be represented mathematically as:</p>
 <div class="math notranslate nohighlight">
 \[
@@ -673,7 +674,9 @@ The sigmoid function needs an input, x. You can also trying different input valu
 </div>
 </div>
 </div>
-<p>## Image processing</p>
+</section>
+<section id="image-processing">
+<h2><span class="section-number">6.3. </span>Image processing<a class="headerlink" href="#image-processing" title="Permalink to this heading">#</a></h2>
 <p>Many characterisation techniques in materials science produce image data. Researchers can save time and perform advanced experiments (e.g. active learning) and analysis (e.g. feature identification) using codes. While “point and click” software solutions exist for image processing, they are often expensive and difficult to customise and automate for large datasets.</p>
 <p>Let’s start by considering three classical convolutional filters:</p>
 <ol class="arabic">
@@ -771,7 +774,7 @@ The sigmoid function needs an input, x. You can also trying different input valu
 <summary> Code hint </summary>
 You can add your own image link and see the result.
 </details><section id="custom-convolutional-filters">
-<h3><span class="section-number">6.2.1. </span>Custom convolutional filters<a class="headerlink" href="#custom-convolutional-filters" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.3.1. </span>Custom convolutional filters<a class="headerlink" href="#custom-convolutional-filters" title="Permalink to this heading">#</a></h3>
 <p>We are not limited to pre-built kernels. This code allows you to chose your own kernel matrix and includes an option for repeated convolutions, so you can apply the filter multiple times.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -822,11 +825,11 @@ Adjust the kernel and the number of interations that the kernel is applied (`num
 </details></section>
 </section>
 <section id="convolutional-neural-networks-cnns">
-<h2><span class="section-number">6.3. </span>Convolutional Neural Networks (CNNs)<a class="headerlink" href="#convolutional-neural-networks-cnns" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.4. </span>Convolutional Neural Networks (CNNs)<a class="headerlink" href="#convolutional-neural-networks-cnns" title="Permalink to this heading">#</a></h2>
 <p>CNNs are a class of deep learning models designed for image analysis. We will now build a basic CNN architecture using the popular deep learning tool <code class="docutils literal notranslate"><span class="pre">pytorch</span></code>.</p>
 <p>We all know that scientists like to dress well 🧑‍🔬. Let’s make use of the <a class="reference external" href="https://github.com/zalandoresearch/fashion-mnist">FashionMNIST</a> dataset that consists of a training set of 60,000 examples and a test set of 10,000 examples of clothing and accessories.</p>
 <section id="fashionable-cnn">
-<h3><span class="section-number">6.3.1. </span>Fashionable CNN<a class="headerlink" href="#fashionable-cnn" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.1. </span>Fashionable CNN<a class="headerlink" href="#fashionable-cnn" title="Permalink to this heading">#</a></h3>
 <p>Pay attention to each of the steps involved in building the model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1056,7 +1059,7 @@ Your are defining a class, whereas Clas is a popular name in Sweden</details><di
 </div>
 </section>
 <section id="learned-filters">
-<h3><span class="section-number">6.3.2. </span>Learned filters<a class="headerlink" href="#learned-filters" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.4.2. </span>Learned filters<a class="headerlink" href="#learned-filters" title="Permalink to this heading">#</a></h3>
 <p>We can analyse the filters that were learned for the trained model.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1088,7 +1091,7 @@ Your are defining a class, whereas Clas is a popular name in Sweden</details><di
 </section>
 </section>
 <section id="synthetic-microscopy-data">
-<h2><span class="section-number">6.4. </span>Synthetic microscopy data<a class="headerlink" href="#synthetic-microscopy-data" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.5. </span>Synthetic microscopy data<a class="headerlink" href="#synthetic-microscopy-data" title="Permalink to this heading">#</a></h2>
 <p>For the exercise, we are going to generate some of our own characterisation data for training. You can imagine that this represents a spatially varying composition or structure, which you could measure with techniques such as Energy-dispersive X-ray spectroscopy (EDS) or electron diffraction. Use your imagination!</p>
 <p>This spatial map is represented by a 50x50 grid of pixels. To make it interesting, our experimentals failed in 25% of cases, leaving us with some unknown pixels (0 values).</p>
 <div class="cell docutils container">
@@ -1150,14 +1153,14 @@ Your are defining a class, whereas Clas is a popular name in Sweden</details><di
 </div>
 </section>
 <section id="exercise-6-heterogeneous-materials">
-<h2><span class="section-number">6.5. </span>🚨 Exercise 6: Heterogeneous materials<a class="headerlink" href="#exercise-6-heterogeneous-materials" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.6. </span>🚨 Exercise 6: Heterogeneous materials<a class="headerlink" href="#exercise-6-heterogeneous-materials" title="Permalink to this heading">#</a></h2>
 <div class="note admonition">
 <p class="admonition-title">Coding exercises</p>
 <p>The exercises are designed to apply what you have learned with room for creativity. It is fine to discuss solutions with your classmates, but the actual code should not be directly copied.</p>
 <p>The completed notebooks are to be submitted at the end of class, but you can revist later, experiment with the code, and follow the further reading suggestions.</p>
 </div>
 <section id="your-details">
-<h3><span class="section-number">6.5.1. </span>Your details<a class="headerlink" href="#your-details" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.6.1. </span>Your details<a class="headerlink" href="#your-details" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1178,7 +1181,7 @@ Your are defining a class, whereas Clas is a popular name in Sweden</details><di
 </div>
 </section>
 <section id="model">
-<h3><span class="section-number">6.5.2. </span>Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.6.2. </span>Model<a class="headerlink" href="#model" title="Permalink to this heading">#</a></h3>
 <p>In this exercise, the goal is to optimise a neural network that can predict the missing values (representing the local property) for each input image. The regression model involves four stages:</p>
 <ol class="arabic simple">
 <li><p><strong>Data generation</strong>: A synthetic dataset of 50x50 pixel images and their corresponding labels (ground truth).</p></li>
@@ -1188,7 +1191,7 @@ Your are defining a class, whereas Clas is a popular name in Sweden</details><di
 </ol>
 </section>
 <section id="tasks">
-<h3><span class="section-number">6.5.3. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this heading">#</a></h3>
+<h3><span class="section-number">6.6.3. </span>Tasks<a class="headerlink" href="#tasks" title="Permalink to this heading">#</a></h3>
 <p>You will now improve the model performance from the current settings (loss of 0.0012). This can be achieved using different hyperparameters and training strategies to achieve the best results. But let’s break it down and focus on delivering one task:</p>
 <ol class="arabic simple">
 <li><p><strong>Learning Rate</strong>: To improve training, adjust the learning rate from the default value of <code class="docutils literal notranslate"><span class="pre">lr=0.25</span></code> to find the optimal value.</p></li>
@@ -1319,7 +1322,7 @@ One approach is to set `lr=rate` and loop over several values of the variable `r
 </section>
 </section>
 <section id="dive-deeper">
-<h2><span class="section-number">6.6. </span>🌊 Dive deeper<a class="headerlink" href="#dive-deeper" title="Permalink to this heading">#</a></h2>
+<h2><span class="section-number">6.7. </span>🌊 Dive deeper<a class="headerlink" href="#dive-deeper" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><em>Level 1:</em> Tackle Chapter 13 on Neural Networks in <a class="reference external" href="https://github.com/jermwatt/machine_learning_refined#what-is-new-in-the-second-edition">Machine Learning Refined</a>.</p></li>
 <li><p><em>Level 2:</em> Watch <a class="reference external" href="https://www.youtube.com/watch?v=aircAruvnKk">What is a Neural Net</a> video by 3Blue1Brown.</p></li>
@@ -1383,23 +1386,24 @@ One approach is to set `lr=rate` and loop over several values of the variable `r
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#learning-microstructure">6.1. 🔬 Learning microstructure</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-perceptrons-to-neural-networks">6.2. From perceptrons to neural networks</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-convolutional-filters">6.2.1. Custom convolutional filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#from-perceptrons-to-neural-networks">6.2. From perceptrons to neural networks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#image-processing">6.3. Image processing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#custom-convolutional-filters">6.3.1. Custom convolutional filters</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-neural-networks-cnns">6.3. Convolutional Neural Networks (CNNs)</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fashionable-cnn">6.3.1. Fashionable CNN</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learned-filters">6.3.2. Learned filters</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convolutional-neural-networks-cnns">6.4. Convolutional Neural Networks (CNNs)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#fashionable-cnn">6.4.1. Fashionable CNN</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#learned-filters">6.4.2. Learned filters</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-microscopy-data">6.4. Synthetic microscopy data</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-heterogeneous-materials">6.5. 🚨 Exercise 6: Heterogeneous materials</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-details">6.5.1. Your details</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">6.5.2. Model</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">6.5.3. Tasks</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#synthetic-microscopy-data">6.5. Synthetic microscopy data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-6-heterogeneous-materials">6.6. 🚨 Exercise 6: Heterogeneous materials</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-details">6.6.1. Your details</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#model">6.6.2. Model</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#tasks">6.6.3. Tasks</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-deeper">6.6. 🌊 Dive deeper</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-deeper">6.7. 🌊 Dive deeper</a></li>
 </ul>
   </nav></div>
 
