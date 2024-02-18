@@ -15,17 +15,17 @@ There is a vibrant community of machine learning developers and open source pack
 
 ## Tools and Benchmarks
 
-* Classical ML: [scikit-learn](https://scikit-learn.org)
+* Classical ML: [scikit-learn](https://scikit-learn.org); [scikit-opt](https://scikit-optimize.github.io)
 
-* Deep Learning: [pytorch](https://pytorch.org); [keras](https://keras.io); [tensorflow](https://www.tensorflow.org)
+* Deep Learning: [pytorch](https://pytorch.org); [tensorflow](https://www.tensorflow.org); [jax](https://github.com/google/jax); [keras](https://keras.io)
 
 * Materials benchmarks: [Matbench](https://matbench.materialsproject.org); [Matbench-Discovery](https://matbench-discovery.materialsproject.org); [JARVIS-Leaderboard](https://pages.nist.gov/jarvis_leaderboard)
 
-* Materials focused tools: [matminer](https://hackingmaterials.lbl.gov/matminer/); [magpie](https://bitbucket.org/wolverton/magpie/src/master/); [matgl](https://github.com/materialsvirtuallab/matgl); [dscribe](https://singroup.github.io/dscribe/latest/)
+* Materials focused tools: [matminer](https://hackingmaterials.lbl.gov/matminer); [automatminer](https://hackingmaterials.lbl.gov/automatminer); [elementembeddings](https://github.com/WMD-group/ElementEmbeddings); [matgl](https://github.com/materialsvirtuallab/matgl); [dscribe](https://singroup.github.io/dscribe)
 
 * Molecular focused tools: [deepchem](https://deepchem.io); [stk](https://github.com/JelfsMaterialsGroup/stk); [chemiscope](https://chemiscope.org)
 
-* Advanced: [mlflow](https://mlflow.org); [shap analysis](https://github.com/slundberg/shap); [automatminer](https://hackingmaterials.lbl.gov/automatminer/)
+* Model tracking: [mlflow](https://mlflow.org); [wandb](https://wandb.ai)
 
 * Other lists: [Awesome Materials Informatics](https://github.com/tilde-lab/awesome-materials-informatics); [Awesome Self Driving Labs](https://github.com/AccelerationConsortium/awesome-self-driving-labs); [Atomistic ML](https://github.com/JuDFTteam/best-of-atomistic-machine-learning)
 
@@ -90,6 +90,8 @@ There is a vibrant community of machine learning developers and open source pack
 * [Materials Informatics](https://www.youtube.com/watch?v=DDliZDwiAoU&list=PLL0SWcFqypCl4lrzk1dMWwTUrzQZFt7y0)
 
 * [Mathematics for Machine Learning Specialisation](https://www.coursera.org/specializations/mathematics-machine-learning)
+
+* [Mathematics in Materials](https://github.com/SergeiVKalinin/MSE_Spring2024)
 
 * [Machine Learning for Everyone](https://vas3k.com/blog/machine_learning/)
 
