@@ -193,6 +193,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="Lecture6.html">6. Artificial Neural Networks</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Lecture7.html">7. Building a Model from Scratch</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Lecture8.html">8. Recent Advances in AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Lecture9.html">9. Research Challenge</a></li>
 </ul>
 
     </div>
@@ -571,13 +572,13 @@ B = -V \frac{\partial P}{\partial V} = V \frac{\partial^2 E}{\partial V^2}
 <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;The full dataset contains </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> entries. </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
 <span class="k">if</span> <span class="n">teaching_mode</span><span class="p">:</span>
-  <span class="c1"># Store the original dataframe as a copy</span>
+  <span class="c1"># Store the original DataFrame as a copy</span>
   <span class="n">full_dataset_df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
-  <span class="c1"># Create a subset of the original dataframe for demonstration purposes</span>
-  <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[:</span><span class="mi">1500</span><span class="p">]</span>
+  <span class="c1"># Create a subset of the original DataFrame for demonstration purposes</span>
+  <span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">n</span><span class="o">=</span><span class="mi">1500</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">41</span><span class="p">)</span>
   <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;For teaching purposes we will only work with </span><span class="si">{</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s1"> entries from the dataframe to make the model training and testing faster. </span><span class="se">\n</span><span class="s1">&#39;</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The dataframe is shown below:&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;The DataFrame is shown below:&#39;</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
