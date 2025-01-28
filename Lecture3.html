@@ -643,11 +643,16 @@ Set the number of bins for the histogram. 50?</details><p>Next, we will analyse 
 <span class="kn">from</span><span class="w"> </span><span class="nn">collections</span><span class="w"> </span><span class="kn">import</span> <span class="n">Counter</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">pymatviz</span><span class="w"> </span><span class="kn">import</span> <span class="n">ptable_heatmap</span>
 
+<span class="c1"># Function to extract elements using a regex pattern</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">extract_elements</span><span class="p">(</span><span class="n">composition</span><span class="p">):</span>
+    <span class="c1"># Regex to match chemical elements: one uppercase letter optionally followed by a lowercase letter</span>
+    <span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;[A-Z][a-z]?&quot;</span>
+    <span class="k">return</span> <span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">composition</span><span class="p">)</span>
+
 <span class="c1"># Extract all unique elements from the composition column</span>
 <span class="n">elements</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">composition</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;composition&#39;</span><span class="p">]:</span>
-    <span class="c1"># Split each composition by non-alphanumeric characters to extract elements</span>
-    <span class="n">elements</span> <span class="o">+=</span> <span class="p">[</span><span class="n">part</span> <span class="k">for</span> <span class="n">part</span> <span class="ow">in</span> <span class="n">re</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;[^a-zA-Z]&#39;</span><span class="p">,</span> <span class="n">composition</span><span class="p">)</span> <span class="k">if</span> <span class="n">part</span><span class="p">]</span>
+    <span class="n">elements</span> <span class="o">+=</span> <span class="n">extract_elements</span><span class="p">(</span><span class="n">composition</span><span class="p">)</span>
 
 <span class="c1"># Count the frequency of each element</span>
 <span class="n">element_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">elements</span><span class="p">)</span>
