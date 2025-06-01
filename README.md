@@ -14,7 +14,7 @@ You have the option to browse the files or download the complete folder using th
 
 _Machine Learning for Materials_ (MATE70026) provides an introduction to statistical research tools for materials theory and simulation. It is aimed at senior undergraduate or junior postgraduate students. 
 
-You will consider how composition-structure-property information in materials science can be represented in a form suitable for machine learning. You will then build, train, and evaluate your own models using public tools and open datasets. 
+You will consider how composition-structure-property information in materials science can be represented in a form suitable for machine learning. You will then build, train, and evaluate your own models using public tools and open datasets. Recent developments in artificial intelligence for science will also be covered. 
 
 A hybrid teaching style will be followed with a mixture of lectures and assignments. The course assumes a basic working knowledge of the Python 3 programming language.
 

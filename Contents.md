@@ -19,9 +19,9 @@
 	* _Exercise: Data-driven thermoelectrics_  
 
 4. **Crystal Representations**
-	* Compositional 
-	* Structural
-	* Graphs   
+	* Composition
+	* Structure
+	* Crystal Graphs   
 	* _Exercise: Navigating crystal space_  
 
 5. **Classical Learning**
@@ -51,9 +51,9 @@
 9. **Generative Artificial Intelligence** 
 	* Large language models 
 	* From latent space to diffusion
+	* Agentic research
 	* _Exercise: Research challenge_ 
 	
 10. **Recent Advances** 
 	* Guest lecture  
 	* _Exercise: Research challenge_ 
-	
