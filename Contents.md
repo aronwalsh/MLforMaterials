@@ -3,7 +3,7 @@
 1. **Introduction**    
     * Overview 
     * Expectations and assessments
-	* _Exercise: Getting started_ 
+	* _Exercise: Scientific programming_ 
 
 2. **Machine Learning Basics**  
 	* Terminology
@@ -16,6 +16,7 @@
 3. **Materials Data**
 	* Data sources and formats
 	* API queries 
+	* Data checks
 	* _Exercise: Data-driven thermoelectrics_  
 
 4. **Crystal Representations**
