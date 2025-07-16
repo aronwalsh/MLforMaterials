@@ -74,7 +74,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'Lecture1';</script>
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
-    <link rel="next" title="2. Machine Learning Basics" href="Lecture2.html" />
     <link rel="prev" title="Resources" href="Resources.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -186,14 +185,6 @@ const thebe_selector_output = ".output, .cell_output"
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Notebooks</span></p>
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">1. Introduction</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Lecture2.html">2. Machine Learning Basics</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Lecture3.html">3. Materials Data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Lecture4.html">4. Crystal Representations</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Lecture5.html">5. Classical Learning</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Lecture6.html">6. Artificial Neural Networks</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Lecture7.html">7. Building a Model from Scratch</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Lecture8.html">8. Accelerated Discovery</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Lecture9.html">9. Research Challenge</a></li>
 </ul>
 
     </div>
@@ -248,7 +239,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://mybinder.org/v2/gh/aronwalsh/MLforMaterials/2025?urlpath=tree/Lecture1.ipynb" target="_blank"
+      <li><a href="https://mybinder.org/v2/gh/aronwalsh/MLforMaterials/2026?urlpath=tree/Lecture1.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onBinder"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -266,7 +257,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       
       
-      <li><a href="https://colab.research.google.com/github/aronwalsh/MLforMaterials/blob/2025/Lecture1.ipynb" target="_blank"
+      <li><a href="https://colab.research.google.com/github/aronwalsh/MLforMaterials/blob/2026/Lecture1.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
    title="Launch onColab"
    data-bs-placement="left" data-bs-toggle="tooltip"
@@ -456,7 +447,7 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">1.1. 👋 Getting started</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-scientific-programming">1.1. 👋 Getting started with scientific programming</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python">1.1.1. Python</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">1.1.2. Markdown</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github">1.1.3. Github</a></li>
@@ -496,10 +487,8 @@ document.write(`
 <h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <div style="background-color: #f8d7da; border-left: 6px solid #ccc; margin: 20px; padding: 15px;">
     <strong>💡 Ada Lovelace:</strong> The more I study, the more insatiable do I feel my genius for it to be.
-</div><iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/3be55cc221ec446eb79c9b2a77fe695e" title="Machine Learning for Materials (Lecture 1)" allowfullscreen="true" style="border: 0px; background-clip: padding-box; background-color: rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 100%; height: auto; aspect-ratio: 560 / 420;" data-ratio="1.3333333333333333"></iframe>
-<p><a class="reference external" href="https://speakerdeck.com/aronwalsh/machine-learning-for-materials-lecture-1">Lecture slides</a></p>
-<section id="getting-started">
-<h2><span class="section-number">1.1. </span>👋 Getting started<a class="headerlink" href="#getting-started" title="Permalink to this heading">#</a></h2>
+</div><section id="getting-started-with-scientific-programming">
+<h2><span class="section-number">1.1. </span>👋 Getting started with scientific programming<a class="headerlink" href="#getting-started-with-scientific-programming" title="Permalink to this heading">#</a></h2>
 <p>Welcome to our first practical session!</p>
 <p>This is a Jupyter Notebook loaded inside a Jupyter Book. They are part of <a class="reference external" href="https://jupyter.org">Project Jupyter</a>, a suite of open-source tools. A Jupyter Notebook also allows you to run and easily share computer code. This combination makes Jupyter notebooks a useful tool for analysing data.</p>
 <p>Unlike spreadsheets or combinations of separate data analysis codes, you can collect descriptions and notes for individual experiments, links to the raw data collected, the computer code that performs any necessary data analysis, and the final figures generated with these data, ready for use in a report or published paper.</p>
@@ -569,7 +558,7 @@ document.write(`
 </section>
 <section id="live-coding">
 <h3><span class="section-number">1.1.4. </span>Live coding<a class="headerlink" href="#live-coding" title="Permalink to this heading">#</a></h3>
-<p>The weekly notebooks are designed to be run online directly in your browser. You can activate the server by clicking the rocket icon on the top right and selecting <code class="docutils literal notranslate"><span class="pre">Live</span> <span class="pre">Code</span></code>. There is an option to open in <a class="reference external" href="https://mybinder.org">Binder</a> or <a class="reference external" href="https://colab.research.google.com">Google Colab</a>. Colab is more powerful, but the formatting won’t be as nice. You can opt to install Python on your own computer with <a class="reference external" href="https://www.anaconda.com/products/distribution">Anaconda</a> and run the notebooks locally, but we do not offer support if things go wrong.</p>
+<p>The weekly notebooks are designed to be run online directly in your browser. You can activate the server by clicking the rocket icon on the top right and selecting <code class="docutils literal notranslate"><span class="pre">Live</span> <span class="pre">Code</span></code>. There is an option to open in <a class="reference external" href="https://mybinder.org">Binder</a> or <a class="reference external" href="https://colab.research.google.com">Google Colab</a>. We recommend Colab for this module, as your edits get saved automatically to your Google Drive, and you can run the notebooks on a powerful cloud server. You can opt to install Python on your own computer with a manager such as <a class="reference external" href="https://www.anaconda.com/products/distribution">Anaconda</a> and run the notebooks locally, but we <em>do not offer support</em> if things go wrong.</p>
 </section>
 </section>
 <section id="analyse-data-with-code">
@@ -595,7 +584,7 @@ document.write(`
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span><span class="o">*</span><span class="mf">2.40</span><span class="o">*</span><span class="mi">3737</span><span class="o">*</span><span class="mi">12</span> <span class="c1"># you get the idea</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">12</span><span class="o">*</span><span class="mf">2.403</span><span class="o">*</span><span class="mi">3737</span><span class="o">*</span><span class="mi">12</span> <span class="c1"># you get the idea</span>
 </pre></div>
 </div>
 </div>
@@ -977,7 +966,7 @@ Your model is not called `model2`. Try changing the name.
         requestKernel: true,
         binderOptions: {
             repo: "aronwalsh/MLforMaterials",
-            ref: "2025",
+            ref: "2026",
         },
         codeMirrorConfig: {
             theme: "abcdef",
@@ -1011,15 +1000,6 @@ Your model is not called `model2`. Try changing the name.
         <p class="prev-next-title">Resources</p>
       </div>
     </a>
-    <a class="right-next"
-       href="Lecture2.html"
-       title="next page">
-      <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title"><span class="section-number">2. </span>Machine Learning Basics</p>
-      </div>
-      <i class="fa-solid fa-angle-right"></i>
-    </a>
 </div>
                 </footer>
               
@@ -1035,7 +1015,7 @@ Your model is not called `model2`. Try changing the name.
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started">1.1. 👋 Getting started</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#getting-started-with-scientific-programming">1.1. 👋 Getting started with scientific programming</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#python">1.1.1. Python</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#markdown">1.1.2. Markdown</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#github">1.1.3. Github</a></li>
