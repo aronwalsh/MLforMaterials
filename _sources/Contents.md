@@ -1,12 +1,13 @@
 # Course Contents
 
 1. **Introduction**    
-    * Overview 
+    * Motivations and scope 
+	* Brief history of AI in science
     * Expectations and assessments
 	* _Exercise: Scientific programming_ 
 
 2. **Machine Learning Basics**  
-	* Terminology
+	* Concepts and terminology
 	* Learning by example
 		* Supervised
 		* Unsupervised
@@ -14,9 +15,9 @@
 	* _Exercise: Crystal hardness_ 
 
 3. **Materials Data**
-	* Data sources and formats
-	* API queries 
-	* Data checks
+	* Data sources and types
+	* FAIR data principles  
+	* Data quality control
 	* _Exercise: Data-driven thermoelectrics_  
 
 4. **Crystal Representations**
@@ -31,7 +32,7 @@
 	* Decision trees and beyond
 	* _Exercise: Metal or insulator?_ 
 
-6. **Artificial Neural Networks**
+6. **Deep Learning**
 	* From neuron to perceptron
 	* Network architecture and training
 	* Convolutional neural networks   
@@ -44,7 +45,7 @@
 	* _Exercise: Crystal hardness II_ 
 
 8. **Accelerated Discovery** 
-	* Automated experiments 
+	* Robotics and self-driving laboratories 
 	* Bayesian optimisation
 	* Reinforcement learning  
 	* _Exercise: Closed-loop optimisation_ 
@@ -55,6 +56,6 @@
 	* Agentic research
 	* _Exercise: Research challenge_ 
 	
-10. **Recent Advances** 
+10. **Future Directions** 
 	* Guest lecture  
 	* _Exercise: Research challenge_ 
