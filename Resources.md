@@ -37,6 +37,8 @@ There is a vibrant community of machine learning developers and open-source pack
 
 * [Data Analysis: A Bayesian Tutorial](https://global.oup.com/academic/product/data-analysis-9780198568322)
 
+* [Deep Generative Modeling](https://link.springer.com/book/10.1007/978-3-031-64087-2) + [repo](https://github.com/jmtomczak/intro_dgm)
+
 * [Deep Learning for Molecules and Materials](https://dmol.pub)
 
 * [Dive into Deep Learning](https://d2l.ai/index.html)
@@ -73,7 +75,7 @@ There is a vibrant community of machine learning developers and open-source pack
 
 * [Statquest with Josh Starmer](https://www.youtube.com/@statquest/videos)
 
-## Other Courses
+## Courses and Guides
 
 * [Automated Experiments](https://github.com/SergeiVKalinin/UTK-Spring-2023---Automated-Experiment) 
 
@@ -88,6 +90,8 @@ There is a vibrant community of machine learning developers and open-source pack
 * [Homemade Machine Learning](https://github.com/trekhleb/homemade-machine-learning)
 
 * [Introduction to Machine Learning in Chemistry](https://github.com/ML4chemArg/Intro-to-Machine-Learning-in-Chemistry)
+
+* [LLM Visualisation](https://bbycroft.net/llm)
 
 * [Materials Informatics](https://www.youtube.com/watch?v=DDliZDwiAoU&list=PLL0SWcFqypCl4lrzk1dMWwTUrzQZFt7y0)
 
