@@ -1,6 +1,6 @@
 # Resources
 
-There is a vibrant community of machine learning developers and open-source packages for scientific research. Many of the links below have provided inspiration or borrowed content for this module.
+There is a vibrant community of machine learning developers and open-source packages for scientific research. Many of the links below have provided inspiration or content for this module.
 
 ![](./images/ml-python.png)
 (Image by [John Kitchen](https://kitchingroup.cheme.cmu.edu))
@@ -17,9 +17,9 @@ There is a vibrant community of machine learning developers and open-source pack
 
 * Classical ML: [scikit-learn](https://scikit-learn.org); [scikit-opt](https://scikit-optimize.github.io)
 
-* Deep Learning: [pytorch](https://pytorch.org); [tensorflow](https://www.tensorflow.org); [jax](https://github.com/google/jax); [keras](https://keras.io)
+* Deep Learning: [pytorch](https://pytorch.org); [tensorflow](https://www.tensorflow.org); [jax](https://github.com/google/jax)
 
-* Materials benchmarks: [Matbench](https://matbench.materialsproject.org); [Matbench-Discovery](https://matbench-discovery.materialsproject.org); [JARVIS-Leaderboard](https://pages.nist.gov/jarvis_leaderboard)
+* Materials benchmarks: [Matbench](https://matbench.materialsproject.org); [Matbench-Discovery](https://matbench-discovery.materialsproject.org); [MLIP-Arena](https://huggingface.co/spaces/atomind/mlip-arena); [JARVIS-Leaderboard](https://pages.nist.gov/jarvis_leaderboard)
 
 * Materials focused tools: [matminer](https://hackingmaterials.lbl.gov/matminer); [automatminer](https://hackingmaterials.lbl.gov/automatminer); [elementembeddings](https://github.com/WMD-group/ElementEmbeddings); [matgl](https://github.com/materialsvirtuallab/matgl); [dscribe](https://singroup.github.io/dscribe)
 
@@ -57,6 +57,8 @@ There is a vibrant community of machine learning developers and open-source pack
 
 * [Best Practices in Machine Learning for Chemistry](https://www.nature.com/articles/s41557-021-00716-z)
 
+* [Has Generative Artificial Intelligence Solved Inverse Materials Design?](https://www.sciencedirect.com/science/article/pii/S259023852400242X)
+
 * [Machine Learning for Molecular and Materials Science](https://www.nature.com/articles/s41586-018-0337-2)
 
 * [Machine Learning for Materials Scientists: An Introductory Guide toward Best Practices](https://pubs.acs.org/doi/10.1021/acs.chemmater.0c01907)
@@ -76,6 +78,8 @@ There is a vibrant community of machine learning developers and open-source pack
 * [Statquest with Josh Starmer](https://www.youtube.com/@statquest/videos)
 
 ## Courses and Guides
+
+* [Agents for Science](https://agents4science.github.io)
 
 * [Automated Experiments](https://github.com/SergeiVKalinin/UTK-Spring-2023---Automated-Experiment) 
 

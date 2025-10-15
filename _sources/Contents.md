@@ -1,4 +1,4 @@
-# Course Contents
+# Module Contents
 
 1. **Introduction**    
     * Motivations and scope 
@@ -53,7 +53,7 @@
 9. **Generative Artificial Intelligence** 
 	* Large language models 
 	* From latent space to diffusion
-	* Agentic research
+	* Scientific agents
 	* _Exercise: Research challenge_ 
 	
 10. **Future Directions** 

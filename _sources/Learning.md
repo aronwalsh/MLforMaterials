@@ -1,6 +1,6 @@
 # Learning Outcomes
 
-At the end of this course, you will be able to:
+At the end of this module, you will be able to:
 
 - Specify and interpret the central concepts underpinning supervised, unsupervised, and reinforcement learning.
 
@@ -10,4 +10,4 @@ At the end of this course, you will be able to:
 
 - Compare a range of classical machine learning and deep learning approaches.
 
-- Train and evaluate machine learning models for chemical problems.
+- Train and evaluate machine learning models for materials problems.
