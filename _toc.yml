@@ -4,7 +4,7 @@
 format: jb-book
 root: Overview
 parts:
-- caption: Course Details
+- caption: Module Details
   numbered: false
   chapters:  
   - file: Contents
