@@ -6,7 +6,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - name: cache binder build on mybinder.org
-      uses: jupyterhub/repo2docker-action@v1
+      uses: jupyterhub/binder-build-action@v1
       with:
-        NO_PUSH: true
-        MYBINDERORG_TAG: ${{ github.ref_name }}
+        binder-url: https://mybinder.org
+        repo: ${{ github.repository }}
+        tag: ${{ github.ref_name }}
