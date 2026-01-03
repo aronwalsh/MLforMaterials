@@ -5,9 +5,6 @@ jobs:
   Create-MyBinderOrg-Cache:
     runs-on: ubuntu-latest
     steps:
-    - name: cache binder build on mybinder.org
-      uses: jupyterhub/binder-build-action@v1
-      with:
-        binder-url: https://mybinder.org
-        repo: ${{ github.repository }}
-        tag: ${{ github.ref_name }}
+    - name: Trigger MyBinder Build
+      run: |
+        curl -L "https://mybinder.org/build/gh/${{ github.repository }}/${{ github.ref_name }}"
