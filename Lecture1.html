@@ -468,7 +468,7 @@ document.write(`
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">1.4. 🚨 Exercise 1</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-details">1.4.1. Your details</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">1.4.2. Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-impurity-diffusion-in-silicon">1.4.2. 🧪 Problem: Impurity Diffusion in Silicon</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-deeper">1.5. 🌊 Dive deeper</a></li>
@@ -487,9 +487,16 @@ document.write(`
 <h1><span class="section-number">1. </span>Introduction<a class="headerlink" href="#introduction" title="Permalink to this heading">#</a></h1>
 <div style="background-color: #f8d7da; border-left: 6px solid #ccc; margin: 20px; padding: 15px;">
     <strong>💡 Ada Lovelace:</strong> The more I study, the more insatiable do I feel my genius for it to be.
-</div><section id="getting-started-with-scientific-programming">
+</div><iframe class="speakerdeck-iframe" frameborder="0" src="https://speakerdeck.com/player/3be55cc221ec446eb79c9b2a77fe695e" title="Machine Learning for Materials (Lecture 1)" allowfullscreen="true" style="border: 0px; background-clip: padding-box; background-color: rgba(0, 0, 0, 0.1); margin: 0px; padding: 0px; border-radius: 6px; box-shadow: rgba(0, 0, 0, 0.2) 0px 5px 40px; width: 50%; height: auto; aspect-ratio: 560 / 420;" data-ratio="1.3333333333333333"></iframe>
+<p><a class="reference external" href="https://speakerdeck.com/aronwalsh/machine-learning-for-materials-lecture-1">Lecture slides</a></p>
+<section id="getting-started-with-scientific-programming">
 <h2><span class="section-number">1.1. </span>👋 Getting started with scientific programming<a class="headerlink" href="#getting-started-with-scientific-programming" title="Permalink to this heading">#</a></h2>
-<p>Welcome to our first practical session!</p>
+<p>Welcome to our first practical session! The aim today is to learn:</p>
+<ul class="simple">
+<li><p>How to run and modify Python code in Jupyter notebooks</p></li>
+<li><p>How to process and visualise scientific data using <em>pandas</em> and <em>matplotlib</em></p></li>
+<li><p>How to model a physical process and perform a simple regression analysis</p></li>
+</ul>
 <p>This is a Jupyter Notebook loaded inside a Jupyter Book. They are part of <a class="reference external" href="https://jupyter.org">Project Jupyter</a>, a suite of open-source tools. A Jupyter Notebook also allows you to run and easily share computer code. This combination makes Jupyter notebooks a useful tool for analysing data.</p>
 <p>Unlike spreadsheets or combinations of separate data analysis codes, you can collect descriptions and notes for individual experiments, links to the raw data collected, the computer code that performs any necessary data analysis, and the final figures generated with these data, ready for use in a report or published paper.</p>
 <p>There are a few components to be aware of:</p>
@@ -916,23 +923,31 @@ Your model is not called `model2`. Try changing the name.
 </div>
 </div>
 </section>
-<section id="problem">
-<h3><span class="section-number">1.4.2. </span>Problem<a class="headerlink" href="#problem" title="Permalink to this heading">#</a></h3>
-<p>Due to their importance in the electronics industry, the diffusion of atoms in semiconductors has been well studied for decades. Below is a set of data for impurity diffusion in crystalline Si [Source: <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-1-4684-0904-8_2">Casey and Pearson (1975)</a>]. It has been arranged into a DataFrame for your convenience.</p>
+<section id="problem-impurity-diffusion-in-silicon">
+<h3><span class="section-number">1.4.2. </span>🧪 Problem: Impurity Diffusion in Silicon<a class="headerlink" href="#problem-impurity-diffusion-in-silicon" title="Permalink to this heading">#</a></h3>
+<p>The diffusion of impurity atoms in semiconductors is a critical process in the fabrication of electronic devices. Extensive measurements over the past decades have provided valuable insights into the diffusion characteristics of various dopants in crystalline silicon.</p>
+<p>The following dataset, adapted from <a class="reference external" href="https://link.springer.com/chapter/10.1007/978-1-4684-0904-8_2">Casey and Pearson (1975)</a>, includes key parameters for a set of common impurities. Each row provides the atomic mass, pre-exponential factor <span class="math notranslate nohighlight">\(D_0\)</span> (in cm²/s), and activation energy <span class="math notranslate nohighlight">\(E_\mathrm{act}\)</span> (in eV):</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 
 <span class="n">data</span> <span class="o">=</span> <span class="p">{</span>
     <span class="s1">&#39;Impurity&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;Al&#39;</span><span class="p">,</span> <span class="s1">&#39;Ga&#39;</span><span class="p">,</span> <span class="s1">&#39;In&#39;</span><span class="p">,</span> <span class="s1">&#39;P&#39;</span><span class="p">,</span> <span class="s1">&#39;As&#39;</span><span class="p">,</span> <span class="s1">&#39;Sb&#39;</span><span class="p">,</span> <span class="s1">&#39;Bi&#39;</span><span class="p">],</span>
-    <span class="s1">&#39;Mass&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">10.81</span><span class="p">,</span> <span class="mf">26.98</span><span class="p">,</span> <span class="mf">69.72</span><span class="p">,</span> <span class="mf">114.82</span><span class="p">,</span> <span class="mf">30.97</span><span class="p">,</span> <span class="mf">74.92</span><span class="p">,</span> <span class="mf">121.76</span><span class="p">,</span> <span class="mf">208.98</span><span class="p">],</span> <span class="c1"># atomic mass in g/mol</span>
-    <span class="s1">&#39;D0&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.1</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">16.5</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">,</span> <span class="mf">1.03E3</span><span class="p">],</span>  <span class="c1"># cm2/sec</span>
-    <span class="s1">&#39;Eact&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.70</span><span class="p">,</span> <span class="mf">3.47</span><span class="p">,</span> <span class="mf">3.51</span><span class="p">,</span> <span class="mf">3.91</span><span class="p">,</span> <span class="mf">3.69</span><span class="p">,</span> <span class="mf">4.20</span><span class="p">,</span> <span class="mf">3.98</span><span class="p">,</span> <span class="mf">4.63</span><span class="p">]</span>  <span class="c1"># eV</span>
+    <span class="s1">&#39;Mass&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">10.81</span><span class="p">,</span> <span class="mf">26.98</span><span class="p">,</span> <span class="mf">69.72</span><span class="p">,</span> <span class="mf">114.82</span><span class="p">,</span> <span class="mf">30.97</span><span class="p">,</span> <span class="mf">74.92</span><span class="p">,</span> <span class="mf">121.76</span><span class="p">,</span> <span class="mf">208.98</span><span class="p">],</span>  <span class="c1"># atomic mass in g/mol</span>
+    <span class="s1">&#39;D0&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">5.1</span><span class="p">,</span> <span class="mf">8.0</span><span class="p">,</span> <span class="mf">3.6</span><span class="p">,</span> <span class="mf">16.5</span><span class="p">,</span> <span class="mf">10.5</span><span class="p">,</span> <span class="mf">60.0</span><span class="p">,</span> <span class="mf">12.9</span><span class="p">,</span> <span class="mf">1.03E3</span><span class="p">],</span>  <span class="c1"># pre-exponential factor (cm²/s)</span>
+    <span class="s1">&#39;Eact&#39;</span><span class="p">:</span> <span class="p">[</span><span class="mf">3.70</span><span class="p">,</span> <span class="mf">3.47</span><span class="p">,</span> <span class="mf">3.51</span><span class="p">,</span> <span class="mf">3.91</span><span class="p">,</span> <span class="mf">3.69</span><span class="p">,</span> <span class="mf">4.20</span><span class="p">,</span> <span class="mf">3.98</span><span class="p">,</span> <span class="mf">4.63</span><span class="p">]</span>  <span class="c1"># activation energy (eV)</span>
 <span class="p">}</span>
 
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
 </pre></div>
 </div>
-<p>Two tasks will be given in class.</p>
+<p>Tasks will be provided in class.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Empty block for your answers (adjust as required)</span>
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Empty block for your answers</span>
@@ -1036,7 +1051,7 @@ Your model is not called `model2`. Try changing the name.
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#exercise-1">1.4. 🚨 Exercise 1</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#your-details">1.4.1. Your details</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem">1.4.2. Problem</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#problem-impurity-diffusion-in-silicon">1.4.2. 🧪 Problem: Impurity Diffusion in Silicon</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dive-deeper">1.5. 🌊 Dive deeper</a></li>
