@@ -15,3 +15,4 @@ parts:
   chapters:
   - file: Lecture1
   - file: Lecture2
+  - file: Lecture3
