@@ -16,3 +16,4 @@ parts:
   - file: Lecture1
   - file: Lecture2
   - file: Lecture3
+  - file: Lecture4
