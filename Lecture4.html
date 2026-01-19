@@ -673,39 +673,6 @@ Close all quotations and add "I" to the elements list.
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
-<span class="kn">import</span><span class="w"> </span><span class="nn">multiprocessing</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">smact</span><span class="w"> </span><span class="kn">import</span> <span class="n">Element</span><span class="p">,</span> <span class="n">element_dictionary</span><span class="p">,</span> <span class="n">ordered_elements</span>
-<span class="kn">from</span><span class="w"> </span><span class="nn">smact.screening</span><span class="w"> </span><span class="kn">import</span> <span class="n">smact_filter</span>
-
-<span class="c1"># Load all elements and then limit to Bi</span>
-<span class="n">all_elements</span> <span class="o">=</span> <span class="n">element_dictionary</span><span class="p">()</span>
-<span class="n">elements</span> <span class="o">=</span> <span class="p">[</span><span class="n">all_elements</span><span class="p">[</span><span class="n">symbol</span><span class="p">]</span> <span class="k">for</span> <span class="n">symbol</span> <span class="ow">in</span> <span class="n">ordered_elements</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">83</span><span class="p">)]</span>
-
-<span class="c1"># Generate all AB combinations + add oxygen (O)</span>
-<span class="n">metal_pairs</span> <span class="o">=</span> <span class="n">itertools</span><span class="o">.</span><span class="n">combinations</span><span class="p">(</span><span class="n">elements</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
-<span class="n">ternary_systems</span> <span class="o">=</span> <span class="p">[[</span><span class="o">*</span><span class="n">pair</span><span class="p">,</span> <span class="n">Element</span><span class="p">(</span><span class="s2">&quot;O&quot;</span><span class="p">)]</span> <span class="k">for</span> <span class="n">pair</span> <span class="ow">in</span> <span class="n">metal_pairs</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Raw element combinations (ABO): --&gt; </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">ternary_systems</span><span class="p">)</span><span class="si">}</span><span class="s2"> &lt;--&quot;</span><span class="p">)</span>
-
-<span class="c1"># Apply chemical filters using multiprocessing</span>
-<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
-    <span class="k">with</span> <span class="n">multiprocessing</span><span class="o">.</span><span class="n">Pool</span><span class="p">(</span><span class="n">processes</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="k">as</span> <span class="n">pool</span><span class="p">:</span>
-        <span class="n">result</span> <span class="o">=</span> <span class="n">pool</span><span class="o">.</span><span class="n">starmap</span><span class="p">(</span><span class="n">smact_filter</span><span class="p">,</span> <span class="n">ternary_systems</span><span class="p">)</span>
-
-<span class="c1"># Flatten the list</span>
-<span class="n">flat_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">composition</span> <span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">result</span> <span class="k">if</span> <span class="n">sublist</span> <span class="k">for</span> <span class="n">composition</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Allowed stoichiometries: --&gt; </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">flat_list</span><span class="p">)</span><span class="si">}</span><span class="s2"> &lt;--&quot;</span><span class="p">)</span>
-
-<span class="c1"># Print some valid compositions</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;  elements, oxidation states, stoichiometries&quot;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="n">flat_list</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">entry</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">itertools</span>
 <span class="kn">import</span><span class="w"> </span><span class="nn">multiprocess</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">mp</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">smact</span><span class="w"> </span><span class="kn">import</span> <span class="n">Element</span><span class="p">,</span> <span class="n">element_dictionary</span><span class="p">,</span> <span class="n">ordered_elements</span>
 <span class="kn">from</span><span class="w"> </span><span class="nn">smact.screening</span><span class="w"> </span><span class="kn">import</span> <span class="n">smact_filter</span>
