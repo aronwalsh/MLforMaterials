@@ -1,3 +1,5 @@
+> **This repository is archived.** Future content for the course, now called *AI for Materials*, is at https://github.com/orgs/AIforMaterials
+
 [![Made withJupyter](https://img.shields.io/badge/Made%20with-Jupyter-orange?style=for-the-badge&logo=Jupyter)](https://jupyter.org/try)
 
 [![deploy-book](https://github.com/aronwalsh/MLforMaterials/actions/workflows/deploy.yml/badge.svg)](https://github.com/aronwalsh/MLforMaterials/actions/workflows/deploy.yml)

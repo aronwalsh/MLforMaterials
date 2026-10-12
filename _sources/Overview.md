@@ -1,5 +1,9 @@
 # Overview
 
+```{important}
+**This course has moved.** Future content for the course, now called *AI for Materials*, is at [https://github.com/orgs/AIforMaterials](https://github.com/orgs/AIforMaterials)
+```
+
 _Machine Learning for Materials_ (MATE70026) provides an introduction to statistical research tools for materials theory and simulation. It is a module designed for students in the Department of Materials at Imperial College London.
 
 You will consider how composition-structure-property information in materials science can be represented in a form suitable for machine learning. You will then build, train, and evaluate your own models using public tools and open datasets. Recent developments in artificial intelligence for science will also be covered. 
